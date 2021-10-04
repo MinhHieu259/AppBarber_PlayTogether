@@ -19,6 +19,7 @@
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:background="@drawable/edit_text_bg"
         />
 
     <EditText
@@ -37,6 +38,7 @@
         app:layout_constraintWidth_percent=".8"
         app:layout_constraintVertical_bias="0"
         android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_bg"
         />
 
     <EditText
@@ -54,6 +56,7 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent=".8"
         android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_bg"
         />
 
     <EditText
@@ -71,14 +74,17 @@
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent=".8"
         android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_bg"
         />
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Đăng Ký"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:background="@drawable/button_bg"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
