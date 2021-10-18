@@ -5,13 +5,20 @@
       <map>
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/drawable/button_bg.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/drawable/edit_text_bg.xml" value="0.2490740740740741" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/drawable/ic_launcher_background.xml" value="0.13854166666666667" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/drawable/view_bg.xml" value="0.25462962962962965" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/activity_dashboard.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/fragment_account.xml" value="0.21014492753623187" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/fragment_calendar.xml" value="0.21014492753623187" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/fragment_home.xml" value="0.20885416666666667" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/fragment_login.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/fragment_notificationment.xml" value="0.21014492753623187" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/fragment_signup.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/login_tab_fragment.xml" value="0.25226449275362317" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/layout/sign_up_tab_fragment.xml" value="0.25226449275362317" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/menu/bottom_menu.xml" value="0.234375" />
       </map>
     </option>
   </component>

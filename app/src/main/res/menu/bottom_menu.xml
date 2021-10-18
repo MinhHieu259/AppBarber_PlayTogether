@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:title="Trang chủ"
+        android:icon="@drawable/icon_home"
+        android:id="@+id/homeFragment"/>
+    <item android:title="Lịch hẹn"
+        android:icon="@drawable/icon_calendar"
+        android:id="@+id/calendarFragment"/>
+    <item android:title="Thông báo"
+        android:icon="@drawable/icon_notification"
+        android:id="@+id/notificationment"
+        />
+    <item android:title="Tài khoản"
+        android:icon="@drawable/icon_account"
+        android:id="@+id/accountFragment"/>
 </menu>
