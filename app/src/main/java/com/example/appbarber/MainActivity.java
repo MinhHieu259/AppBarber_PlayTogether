@@ -1,4 +1,5 @@
 package com.example.appbarber;
+import android.os.Bundle;
 
 import static android.app.ActivityOptions.makeSceneTransitionAnimation;
 
@@ -6,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
 import android.view.View;
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView image;
     TextView logo, slogan;
     Button login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,14 +39,9 @@ public class MainActivity extends AppCompatActivity {
         image.setAnimation(topAnim);
         logo.setAnimation(bottomAnim);
         slogan.setAnimation(bottomAnim);
-        login = (Button)  findViewById(R.id.btn_login);
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this, Dashboard.class);
-//                startActivity(intent);
-//            }
-//        });
+
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

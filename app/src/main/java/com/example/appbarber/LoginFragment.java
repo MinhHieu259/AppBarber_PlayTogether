@@ -1,5 +1,6 @@
 package com.example.appbarber;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -60,7 +61,15 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        View view =inflater.inflate(R.layout.fragment_login, container,false);
+        Button login=(Button) view.findViewById(R.id.btn_login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),Dashboard.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 }
