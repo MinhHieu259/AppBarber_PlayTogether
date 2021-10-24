@@ -1,5 +1,6 @@
 package com.example.appbarber.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.appbarber.R;
+import com.example.appbarber.activity.DashboardActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,8 +69,8 @@ public class LoginFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(),Dashboard.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getActivity(), DashboardActivity.class);
+                startActivity(intent);
             }
         });
         return view;
