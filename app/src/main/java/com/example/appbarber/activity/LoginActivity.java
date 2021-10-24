@@ -53,14 +53,6 @@ float v= 0;
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
-//        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-//         final LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
-//            viewPager.setAdapter(adapter);
-//            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-//            tabLayout.setTranslationX(300);
-//            tabLayout.setAlpha(v);
 
     }
 }

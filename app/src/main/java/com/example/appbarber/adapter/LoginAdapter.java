@@ -22,8 +22,6 @@ public class LoginAdapter extends FragmentStateAdapter {
         {
             case 1:
                 return new SignupFragment();
-
-
         }
         return new LoginFragment();
     }
@@ -32,30 +30,5 @@ public class LoginAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return 2;
     }
-//    private Context context;
-//    int totalTabs;
-//    public LoginAdapter(FragmentManager fm, Context context, int totalTabs){
-//        super(fm);
-//        this.context = context;
-//        this.totalTabs = totalTabs;
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        return totalTabs;
-//    }
-//
-//    public Fragment getItem(int position){
-//        switch (position){
-//            case 0:
-//                LoginTabFragment loginTabFragment = new LoginTabFragment();
-//                return loginTabFragment;
-//            case 1:
-//                SignupTabFragment signupTabFragment = new SignupTabFragment();
-//                return signupTabFragment;
-//            default:
-//                return null;
-//        }
-//    }
 
 }
