@@ -1,15 +1,14 @@
-package com.example.appbarber;
+package com.example.appbarber.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Adapter;
 
+import com.example.appbarber.adapter.LoginAdapter;
+import com.example.appbarber.R;
 import com.google.android.material.tabs.TabLayout;
 
 public class LoginActivity extends AppCompatActivity {

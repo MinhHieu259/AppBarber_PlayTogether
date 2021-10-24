@@ -1,4 +1,4 @@
-package com.example.appbarber;
+package com.example.appbarber.activity;
 import android.os.Bundle;
 
 import static android.app.ActivityOptions.makeSceneTransitionAnimation;
@@ -16,6 +16,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.appbarber.R;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN = 5000;
