@@ -66,8 +66,8 @@ public class LoginFragment extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),Dashboard.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(),Dashboard.class);
+//                startActivity(intent);
             }
         });
         return view;
