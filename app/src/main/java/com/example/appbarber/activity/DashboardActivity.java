@@ -1,4 +1,4 @@
-package com.example.appbarber.activity;
+package com.example.appbarber;
 
 import androidx.appcompat.app.AppCompatActivity;
 
