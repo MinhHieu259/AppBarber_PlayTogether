@@ -1,7 +1,12 @@
 package com.example.appbarber.Class;
 
-public class SliderSalon {
+import java.util.List;
+
+public class Salon {
     public String name, desc, address;
     public int image;
     public float rating;
+
+
+
 }
