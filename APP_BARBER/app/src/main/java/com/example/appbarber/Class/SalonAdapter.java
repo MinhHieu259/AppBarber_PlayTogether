@@ -16,6 +16,9 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
 
+/**
+ *
+ */
 public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHoder> {
 
     private final List<Salon> salons;

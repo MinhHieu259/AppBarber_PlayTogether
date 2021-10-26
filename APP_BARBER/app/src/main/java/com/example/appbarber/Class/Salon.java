@@ -6,7 +6,4 @@ public class Salon {
     public String name, desc, address;
     public int image;
     public float rating;
-
-
-
 }

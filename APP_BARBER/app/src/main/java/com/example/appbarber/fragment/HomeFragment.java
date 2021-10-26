@@ -1,7 +1,9 @@
 package com.example.appbarber.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,14 +11,9 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.appbarber.Class.Salon;
 import com.example.appbarber.Class.SalonAdapter;
 import com.example.appbarber.R;
-import com.example.appbarber.activity.DashboardActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +55,10 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+    private void setupSalonsViewPager(){
+        
 
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +66,7 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
     private List<Salon> getSalons(){
         List<Salon> salons = new ArrayList<>();
@@ -86,24 +87,7 @@ public class HomeFragment extends Fragment {
 
         return salons;
     }
-    private void setupSalonsViewPager(){
-        ViewPager2 salonsViewPager = findViewById(R.id.salonviewpager);
-        SalonAdapter salonAdapter;
-        salonsViewPager.setClipToPadding(false);
-        salonsViewPager.setClipChildren(false);
-        salonsViewPager.setOffscreenPageLimit(3);
-        salonsViewPager.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
-        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
-        compositePageTransformer.addTransformer(new MarginPageTransformer(10));
-        compositePageTransformer.addTransformer((page, position) -> {
-            float r = 1 - Math.abs(position);
-            page.setScaleY(0.85f + r * 0.15f);
-        });
-        salonsViewPager.setPageTransformer(compositePageTransformer);
 
-
-        salonsViewPager.setAdapter(new Salon(getSalons()));
-    }
 
 
 
@@ -111,6 +95,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_login, container,false);
+        ViewPager2 salonsViewPager = view.findViewById(R.id.salonviewpager);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);

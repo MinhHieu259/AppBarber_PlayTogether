@@ -1,28 +1,18 @@
 package com.example.appbarber.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.appbarber.Class.Salon;
-import com.example.appbarber.Class.SalonAdapter;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.appbarber.R;
 import com.example.appbarber.fragment.HomeFragment;
 import com.example.appbarber.fragment.LichFragment;
 import com.example.appbarber.fragment.TaikhoanFragment;
 import com.example.appbarber.fragment.ThongbaoFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -62,6 +52,7 @@ public class DashboardActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
 
 
 }
