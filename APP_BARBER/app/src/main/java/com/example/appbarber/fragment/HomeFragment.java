@@ -6,17 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
-import androidx.viewpager2.widget.MarginPageTransformer;
-import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.appbarber.Class.Salon;
-import com.example.appbarber.Class.SalonAdapter;
 import com.example.appbarber.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +46,7 @@ public class HomeFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-    private void setupSalonsViewPager(){
-        
 
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,25 +56,7 @@ public class HomeFragment extends Fragment {
         }
 
     }
-    private List<Salon> getSalons(){
-        List<Salon> salons = new ArrayList<>();
 
-        Salon s30shine = new Salon();
-        s30shine.image= R.drawable.image30shine;
-        s30shine.name = "30Shine tiệm cắt tóc chuyên nghiệp";
-        s30shine.address = "40 Cao Thắng, Hải Châu, Đà Nẵng";
-        s30shine.rating = 4.6f;
-        salons.add(s30shine);
-
-        Salon salonloc = new Salon();
-        salonloc.image= R.drawable.salonloc;
-        salonloc.name = "Salon lộc tiệm cắt tóc chuyên nghiệp";
-        salonloc.address = "40 Trưng Nữ Vương";
-        salonloc.rating = 4.2f;
-        salons.add(salonloc);
-
-        return salons;
-    }
 
 
 
@@ -95,7 +65,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_login, container,false);
-        ViewPager2 salonsViewPager = view.findViewById(R.id.salonviewpager);
+
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);

@@ -6,13 +6,22 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.appbarber.Class.Salon;
+import com.example.appbarber.Class.SalonAdapter;
 import com.example.appbarber.R;
 import com.example.appbarber.fragment.HomeFragment;
 import com.example.appbarber.fragment.LichFragment;
 import com.example.appbarber.fragment.TaikhoanFragment;
 import com.example.appbarber.fragment.ThongbaoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -24,7 +33,9 @@ public class DashboardActivity extends AppCompatActivity {
         final BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+
     }
+
     private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod = new
             BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -34,6 +45,7 @@ public class DashboardActivity extends AppCompatActivity {
                     {
                         case R.id.home:
                             fragment = new HomeFragment();
+
                             break;
 
                         case R.id.lichhen:
