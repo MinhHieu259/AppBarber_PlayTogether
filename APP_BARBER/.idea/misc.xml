@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_dashboard.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/selector.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_account.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_calendar.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_home.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_noti.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/fragment_home.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/fragment_lich.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/fragment_login.xml" value="0.12158054711246201" />
@@ -12,6 +17,7 @@
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/fragment_taikhoan.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/fragment_thongbao.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/item_slider_home.xml" value="0.1621376811594203" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/menu/menu.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/drawable/button_bg.xml" value="0.25462962962962965" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/drawable/edit_text_bg.xml" value="0.2490740740740741" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/app/src/main/res/drawable/ic_launcher_background.xml" value="0.13854166666666667" />
