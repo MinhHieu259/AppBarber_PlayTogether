@@ -10,14 +10,17 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.appbarber.Class.Salon;
+import com.example.appbarber.Class.SalonhelperClasss;
 import com.example.appbarber.R;
 import com.example.appbarber.adapter.SalonAdapter;
+import com.example.appbarber.adapter.noibatSalonAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -25,6 +28,9 @@ import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
     LinearLayout lngantoi;
+    RecyclerView noibatRecycler;
+    RecyclerView.Adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +71,19 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
         setupSalonsViewPager();
+        noibatRecycler = findViewById(R.id.recycleNoibat);
+        noibatRecycler();
+    }
+
+    private void noibatRecycler() {
+        noibatRecycler.setHasFixedSize(true);
+        noibatRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        ArrayList<SalonhelperClasss> noibatSalons = new ArrayList<>();
+        noibatSalons.add(new SalonhelperClasss(R.drawable.luxuryman, "Luxury Salon", "60 Điện Biên Phủ"));
+        noibatSalons.add(new SalonhelperClasss(R.drawable.toclangtu, "Lãng tử Salon", "41 Phạm Văn Nghị"));
+        noibatSalons.add(new SalonhelperClasss(R.drawable.naubarber, "Nâu barber Salon", "694 Trần Cao Vân"));
+        adapter = new noibatSalonAdapter(noibatSalons);
+        noibatRecycler.setAdapter(adapter);
     }
 
     private void setupSalonsViewPager(){
