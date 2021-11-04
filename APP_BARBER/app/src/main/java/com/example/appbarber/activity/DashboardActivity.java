@@ -1,6 +1,8 @@
 package com.example.appbarber.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,6 +86,7 @@ public class DashboardActivity extends AppCompatActivity {
         noibatSalons.add(new SalonhelperClasss(R.drawable.naubarber, "Nâu barber Salon", "694 Trần Cao Vân"));
         adapter = new noibatSalonAdapter(noibatSalons);
         noibatRecycler.setAdapter(adapter);
+        Drawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
     }
 
     private void setupSalonsViewPager(){

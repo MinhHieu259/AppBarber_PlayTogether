@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="2dp"
-    app:cardElevation="8dp">
+    app:cardElevation="8dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 <RelativeLayout
     android:id="@+id/noibatrelative"
     android:layout_width="180dp"
@@ -41,7 +43,9 @@
             android:text="41 Phạm Văn Nghị"
             android:textColor="@color/white"
             android:layout_marginLeft="10dp"
-            android:textSize="10sp"
+            android:layout_marginTop="5dp"
+            android:textSize="8sp"
+            android:paddingBottom="5dp"
             android:fontFamily="@font/gilda_display"
             />
     </LinearLayout>
