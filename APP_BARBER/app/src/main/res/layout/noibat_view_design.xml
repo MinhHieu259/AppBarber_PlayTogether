@@ -13,9 +13,11 @@
     android:layout_height="wrap_content"
     >
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/noibatimage"
         android:layout_width="match_parent"
+        app:riv_corner_radius_top_left="8dp"
+        app:riv_corner_radius_top_right="8dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:src="@drawable/toclangtu" />

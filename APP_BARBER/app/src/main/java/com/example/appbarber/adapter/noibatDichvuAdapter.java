@@ -3,7 +3,6 @@ package com.example.appbarber.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbarber.Class.Dichvu;
 import com.example.appbarber.R;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class noibatDichvuAdapter extends RecyclerView.Adapter<noibatDichvuAdapte
     }
 
     public static class noibatDvViewHolder extends RecyclerView.ViewHolder{
-        ImageView imageDv;
+        RoundedImageView imageDv;
         TextView tenDV, gia, tenSalon;
         public noibatDvViewHolder(@NonNull View itemView) {
             super(itemView);

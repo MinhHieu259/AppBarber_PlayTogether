@@ -3,7 +3,6 @@ package com.example.appbarber.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbarber.Class.SalonhelperFeature;
 import com.example.appbarber.R;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 
@@ -44,7 +44,7 @@ public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.
 
     public static class noibatViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView image;
+        RoundedImageView image;
         TextView title, address;
 
         public noibatViewHolder(@NonNull View itemView) {

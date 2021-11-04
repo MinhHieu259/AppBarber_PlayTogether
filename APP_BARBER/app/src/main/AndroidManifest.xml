@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBarber">
         <activity
+            android:name=".activity.ShowDetailSalonActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.AccountActivity"
             android:exported="true" />
         <activity
