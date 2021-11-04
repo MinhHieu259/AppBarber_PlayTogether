@@ -9,15 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appbarber.Class.SalonhelperClasss;
+import com.example.appbarber.Class.SalonhelperFeature;
 import com.example.appbarber.R;
 
 import java.util.ArrayList;
 
 public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.noibatViewHolder> {
-    ArrayList<SalonhelperClasss> noibatSalons;
+    ArrayList<SalonhelperFeature> noibatSalons;
 
-    public noibatSalonAdapter(ArrayList<SalonhelperClasss> noibatSalons) {
+    public noibatSalonAdapter(ArrayList<SalonhelperFeature> noibatSalons) {
         this.noibatSalons = noibatSalons;
     }
 
@@ -31,7 +31,7 @@ public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull noibatViewHolder holder, int position) {
-     SalonhelperClasss salonhelperClasss = noibatSalons.get(position);
+     SalonhelperFeature salonhelperClasss = noibatSalons.get(position);
      holder.image.setImageResource(salonhelperClasss.getImage());
      holder.title.setText(salonhelperClasss.getTitle());
      holder.address.setText(salonhelperClasss.getAddress());

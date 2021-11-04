@@ -1,8 +1,6 @@
 package com.example.appbarber.activity;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,10 +16,12 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.appbarber.Class.Dichvu;
 import com.example.appbarber.Class.Salon;
-import com.example.appbarber.Class.SalonhelperClasss;
+import com.example.appbarber.Class.SalonhelperFeature;
 import com.example.appbarber.R;
 import com.example.appbarber.adapter.SalonAdapter;
+import com.example.appbarber.adapter.noibatDichvuAdapter;
 import com.example.appbarber.adapter.noibatSalonAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,7 +30,7 @@ import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
     LinearLayout lngantoi;
-    RecyclerView noibatRecycler;
+    RecyclerView noibatRecycler, dvnoibatRecycler;
     RecyclerView.Adapter adapter;
 
     @Override
@@ -75,18 +75,31 @@ public class DashboardActivity extends AppCompatActivity {
         setupSalonsViewPager();
         noibatRecycler = findViewById(R.id.recycleNoibat);
         noibatRecycler();
+        dvnoibatRecycler = findViewById(R.id.recycleDvNoiBat);
+        dvNoibatRecycler();
     }
 
     private void noibatRecycler() {
         noibatRecycler.setHasFixedSize(true);
         noibatRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        ArrayList<SalonhelperClasss> noibatSalons = new ArrayList<>();
-        noibatSalons.add(new SalonhelperClasss(R.drawable.luxuryman, "Luxury Salon", "60 Điện Biên Phủ"));
-        noibatSalons.add(new SalonhelperClasss(R.drawable.toclangtu, "Lãng tử Salon", "41 Phạm Văn Nghị"));
-        noibatSalons.add(new SalonhelperClasss(R.drawable.naubarber, "Nâu barber Salon", "694 Trần Cao Vân"));
+        ArrayList<SalonhelperFeature> noibatSalons = new ArrayList<>();
+        noibatSalons.add(new SalonhelperFeature(R.drawable.luxuryman, "Luxury Salon", "60 Điện Biên Phủ"));
+        noibatSalons.add(new SalonhelperFeature(R.drawable.toclangtu, "Lãng tử Salon", "41 Phạm Văn Nghị"));
+        noibatSalons.add(new SalonhelperFeature(R.drawable.naubarber, "Nâu barber Salon", "694 Trần Cao Vân"));
         adapter = new noibatSalonAdapter(noibatSalons);
         noibatRecycler.setAdapter(adapter);
-        Drawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
+//        Drawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
+    }
+    private void dvNoibatRecycler() {
+        dvnoibatRecycler.setHasFixedSize(true);
+        dvnoibatRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        ArrayList<Dichvu> dichvus = new ArrayList<>();
+        dichvus.add(new Dichvu(R.drawable.combo10buoc30shine, "Combo 10 bước", "80K", "30Shine"));
+        dichvus.add(new Dichvu(R.drawable.cb10buocluxury, "Combo 10 bước", "100K", "Luxury Salon"));
+        dichvus.add(new Dichvu(R.drawable.uonhan8capdo, "Uốn hàn quốc 8 cấp", "260K", "30Shine"));
+        adapter = new noibatDichvuAdapter(dichvus);
+        dvnoibatRecycler.setAdapter(adapter);
+//        Drawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
     }
 
     private void setupSalonsViewPager(){
@@ -107,19 +120,12 @@ public class DashboardActivity extends AppCompatActivity {
 
     private List<Salon> getSalons(){
         List<Salon> salons = new ArrayList<>();
-        Salon s30shine = new Salon();
-        s30shine.name = "30Shine tiệm cắt tóc chuyên nghiệp";
-        s30shine.address = "40 Cao Thắng, Hải Châu, Đà Nẵng";
-        s30shine.image = R.drawable.image30shine;
-        s30shine.rating = 4.6f;
+        Salon s30shine = new Salon("30Shine tiệm cắt tóc chuyên nghiệp", "40 Cao Thắng, Hải Châu, Đà Nẵng",
+                R.drawable.image30shine, 4.6f);
         salons.add(s30shine);
 
 
-        Salon salonloc = new Salon();
-        salonloc.name = "Salon Lộc";
-        salonloc.address = "40 Trưng Nữ Vương";
-        salonloc.image = R.drawable.salonloc;
-        salonloc.rating = 4.2f;
+        Salon salonloc = new Salon("Salon Lộc","40 Trưng Nữ Vương", R.drawable.salonloc, 4.2f);
         salons.add(salonloc);
 
         return salons;

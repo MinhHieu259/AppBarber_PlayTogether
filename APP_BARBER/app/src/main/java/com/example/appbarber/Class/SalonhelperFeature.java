@@ -1,10 +1,10 @@
 package com.example.appbarber.Class;
 
-public class SalonhelperClasss {
+public class SalonhelperFeature {
     int  image;
     String title, address;
 
-    public SalonhelperClasss(int image, String title, String address) {
+    public SalonhelperFeature(int image, String title, String address) {
         this.image = image;
         this.title = title;
         this.address = address;
