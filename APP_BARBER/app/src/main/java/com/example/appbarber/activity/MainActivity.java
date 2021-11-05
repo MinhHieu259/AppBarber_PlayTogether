@@ -22,6 +22,7 @@ import com.example.appbarber.R;
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_SCREEN = 5000;
 
+
     Animation topAnim, bottomAnim;
     ImageView image;
     TextView logo, slogan;

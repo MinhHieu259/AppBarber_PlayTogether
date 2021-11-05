@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
-    LinearLayout lngantoi;
+    LinearLayout lngantoi, lnbando;
     RecyclerView noibatRecycler, dvnoibatRecycler;
     RecyclerView.Adapter adapter;
 
@@ -39,12 +39,22 @@ public class DashboardActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
         lngantoi = (LinearLayout) findViewById(R.id.lngantoi);
+        lnbando = (LinearLayout) findViewById(R.id.lnbando);
         lngantoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(DashboardActivity.this, "Gần tôi nhất", Toast.LENGTH_SHORT).show();
             }
         });
+        lnbando.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DashboardActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
