@@ -30,17 +30,24 @@
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/bg_radius_bottom_blue.xml" value="0.171875" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/bgr_radius_bottom.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/button_bg.xml" value="0.17592592592592593" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/edit_text_bg.xml" value="0.18703703703703703" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/linear_radius.xml" value="0.17592592592592593" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/radio_normal.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/radio_selected.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/radio_selector.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/radio_text_color.xml" value="0.18703703703703703" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/selector.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/drawable/view_bg.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_account.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_calendar.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_dashboard.xml" value="0.176" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_dat_lich.xml" value="0.2" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_home.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_login.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_main.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_noti.xml" value="0.19270833333333334" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/activity_show_detail_salon.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/dichvu_spinner_row.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/dvnoibat_view.xml" value="0.264" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/fragment_home.xml" value="0.12158054711246201" />
         <entry key="..\:/Users/ADMIN/Desktop/AppBarber_PlayTogether/APP_BARBER/app/src/main/res/layout/fragment_lich.xml" value="0.12158054711246201" />
