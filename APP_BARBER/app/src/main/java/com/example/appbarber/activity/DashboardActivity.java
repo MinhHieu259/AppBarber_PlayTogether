@@ -6,7 +6,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,12 +39,6 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         lngantoi = (LinearLayout) findViewById(R.id.lngantoi);
         lnbando = (LinearLayout) findViewById(R.id.lnbando);
-        lngantoi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(DashboardActivity.this, "Gần tôi nhất", Toast.LENGTH_SHORT).show();
-            }
-        });
         lnbando.setOnClickListener(new View.OnClickListener(){
 
             @Override
