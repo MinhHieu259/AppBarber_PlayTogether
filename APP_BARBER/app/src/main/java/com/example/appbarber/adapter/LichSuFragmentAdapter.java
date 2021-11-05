@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.appbarber.fragment.FristFragment;
-import com.example.appbarber.fragment.SecondFragment;
+import com.example.appbarber.fragment.SapToiFragment;
+import com.example.appbarber.fragment.LichSuFragment;
 
 public class LichSuFragmentAdapter extends FragmentStateAdapter {
 
@@ -21,10 +21,10 @@ public class LichSuFragmentAdapter extends FragmentStateAdapter {
         switch (position)
         {
             case 1:
-                return new SecondFragment();
+                return new LichSuFragment();
         }
 
-        return new FristFragment();
+        return new SapToiFragment();
     }
 
     @Override
