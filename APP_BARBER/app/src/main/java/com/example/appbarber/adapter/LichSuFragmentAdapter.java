@@ -8,11 +8,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.appbarber.fragment.FristFragment;
 import com.example.appbarber.fragment.SecondFragment;
-import com.example.appbarber.fragment.ThirdFragment;
 
-public class ThongBaoFragmentAdapter extends FragmentStateAdapter {
+public class LichSuFragmentAdapter extends FragmentStateAdapter {
 
-    public ThongBaoFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public LichSuFragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
 
@@ -23,15 +22,13 @@ public class ThongBaoFragmentAdapter extends FragmentStateAdapter {
         {
             case 1:
                 return new SecondFragment();
-            case 2: return new ThirdFragment();
         }
-
 
         return new FristFragment();
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 2;
     }
 }

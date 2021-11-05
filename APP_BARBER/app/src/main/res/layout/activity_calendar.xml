@@ -7,6 +7,7 @@
     tools:context=".activity.CalendarActivity">
 
     <LinearLayout
+        android:id="@+id/llthongbao"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:background="@drawable/line_buttom">
@@ -24,9 +25,35 @@
             android:textColor="#000"
             android:textSize="40sp"
             />
-
     </LinearLayout>
 
+    <com.google.android.material.tabs.TabLayout
+        android:layout_below="@id/llthongbao"
+        app:tabGravity="start"
+        android:id="@+id/tab_layout"
+        android:layout_width="wrap_content"
+        android:paddingLeft="10dp"
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="#000"
+        app:tabTextColor="#000"
+        app:tabIndicatorColor="#1294F2"
+        app:tabIndicatorFullWidth="false"
+        app:layout_constraintVertical_bias="0"
+
+        />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_page2"
+        android:layout_below="@id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+        />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
