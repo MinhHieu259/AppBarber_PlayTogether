@@ -1,4 +1,4 @@
-package com.example.appbarber.activity;
+package com.example.appbarber.fragment;
 
 import android.os.Bundle;
 
