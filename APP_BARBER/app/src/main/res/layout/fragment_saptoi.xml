@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/radius_back"
     tools:context=".fragment.SapToiFragment"
     >
 
@@ -12,7 +12,7 @@
         android:id="@+id/lvThongBaoSapToi"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@drawable/radius_back"
         />
 
 </FrameLayout>
