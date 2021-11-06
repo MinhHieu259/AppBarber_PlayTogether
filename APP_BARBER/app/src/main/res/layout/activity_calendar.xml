@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/radius_back"
     tools:context=".activity.CalendarActivity">
 
     <LinearLayout
-        android:id="@+id/llthongbao"
+        android:id="@+id/lnlLichHen"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:background="@drawable/line_buttom">
@@ -23,12 +23,14 @@
             android:layout_marginTop="17dp"
             android:layout_marginEnd="21dp"
             android:text="Lịch cắt của bạn"
+            android:fontFamily="@font/roboto_medium"
             android:textColor="#000"
             android:textSize="40sp" />
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_below="@id/llthongbao"
+        android:background="@drawable/radius_back"
+        android:layout_below="@id/lnlLichHen"
         app:tabGravity="start"
         android:id="@+id/tab_layout"
         android:layout_width="wrap_content"
@@ -44,16 +46,16 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_page2"
-        android:layout_below="@id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/tab_layout"
+        android:background="@drawable/radius_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent=".7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0"
-        />
+        app:layout_constraintVertical_bias="0" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

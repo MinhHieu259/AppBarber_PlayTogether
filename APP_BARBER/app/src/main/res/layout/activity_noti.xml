@@ -3,24 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".activity.NotiActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="THONG BAO"
-        android:textSize="50sp"
-        android:layout_centerInParent="true"
-        />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+    <LinearLayout
+        android:id="@+id/lnlthongbao"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:background="@drawable/line_buttom">
+
+        <TextView
+            android:id="@+id/textViewMenuThongBao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingLeft="100dp"
+            android:text="Thông báo"
+            android:textColor="#000"
+            android:textSize="40sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lnlListViewItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
-        app:itemBackground="@color/white"
+        android:layout_below="@+id/lnlthongbao"
         android:background="@color/white"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
-        app:menu="@menu/menu"
+        >
+        <ListView
+            android:id="@+id/lvThongBao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            />
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        />
+        android:background="@color/white"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu" />
 </RelativeLayout>
