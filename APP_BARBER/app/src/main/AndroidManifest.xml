@@ -17,9 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBarber">
-        <activity
-<<<<<<< HEAD
-            android:name=".activity.YeuThichActivity"
+
 =======
             android:name=".activity.XacNhanActivity"
 >>>>>>> ac333ba0851469b91e5111640a3c0241e76eab7a
