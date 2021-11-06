@@ -3,15 +3,19 @@ package com.example.appbarber.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.ActivityChooserView;
 
 import com.example.appbarber.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AccountActivity extends AppCompatActivity {
+    private RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,14 @@ public class AccountActivity extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+        relativeLayout = findViewById(R.id.rlLayoutYeuThich);
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), YeuThichActivity.class);
+                startActivity(intent);
             }
         });
     }
