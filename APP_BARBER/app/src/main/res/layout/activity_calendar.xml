@@ -8,7 +8,7 @@
     tools:context=".activity.CalendarActivity">
 
     <LinearLayout
-        android:id="@+id/llthongbao"
+        android:id="@+id/lnlLichHen"
         android:layout_width="match_parent"
         android:layout_height="95dp"
         android:background="@drawable/line_buttom">
@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_below="@id/llthongbao"
+        android:layout_below="@id/lnlLichHen"
         app:tabGravity="start"
         android:id="@+id/tab_layout"
         android:layout_width="wrap_content"
