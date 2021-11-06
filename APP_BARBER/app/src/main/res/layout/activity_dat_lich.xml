@@ -137,7 +137,7 @@
 
     </LinearLayout>
 
-<<<<<<< HEAD
+
     <TextView
         android:id="@+id/textViewHidden"
         android:layout_width="wrap_content"
@@ -158,8 +158,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textHiddenTime"
         android:text="" />
-=======
->>>>>>> baf4685b7d027322739407dfc07fdcfeb396645f
+
+
     <Button
         android:id="@+id/btn_tieptuc"
         android:layout_width="300dp"
