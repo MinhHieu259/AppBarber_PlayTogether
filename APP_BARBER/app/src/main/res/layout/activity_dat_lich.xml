@@ -35,7 +35,7 @@
             android:layout_marginLeft="40dp"
             >
             <RadioGroup
-
+                android:id="@+id/radioGrTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -112,38 +112,60 @@
 
     <LinearLayout
         android:id="@+id/linearChonDV"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/linearChonTG"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/linearChonTG"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chọn dịch vụ"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             android:layout_marginLeft="40dp"
-            android:textSize="18sp" />
+            android:text="Chọn dịch vụ"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <Spinner
             android:id="@+id/spinnerDV"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="40dp" />
+
     </LinearLayout>
-<Button
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:text="Tiếp tục"
-    android:id="@+id/btn_tieptuc"
-    android:layout_alignParentBottom="true"
-    android:layout_marginBottom="20dp"
-    android:layout_centerHorizontal="true"
-    android:textColor="@color/white"
-    android:background="@drawable/button_bg"
-    />
+
+    <TextView
+        android:id="@+id/textViewHidden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearChonDV"
+        android:layout_marginTop="20dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textHiddenTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewHidden"
+        android:text="" />
+    <TextView
+        android:id="@+id/textHiddenDV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textHiddenTime"
+        android:text="" />
+    <Button
+        android:id="@+id/btn_tieptuc"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_bg"
+        android:text="Tiếp tục"
+        android:textColor="@color/white" />
 
 </RelativeLayout>
