@@ -22,19 +22,19 @@ public class ViewPagerAdapter extends PagerAdapter {
         this.context = context;
     }
     private int images[] = {
-            R.drawable.pig,
-            R.drawable.pig,
-            R.drawable.pig
+            R.drawable.onboard1,
+            R.drawable.onboard1,
+            R.drawable.onboard1
     };
     private String titles[] = {
-            "Learn",
-            "Create",
-            "Enjoy"
+            "Nhiều Salon nổi tiếng",
+            "Lựa chọn",
+            "Nhanh chóng"
     };
     private String descs[] = {
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies blandit vehicula",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies blandit vehicula",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultricies blandit vehicula"
+            "Đặt lịch nhiều salon nổi tiếng",
+            "Tự lựa chọn nhân viên, dịch vụ theo sở thích",
+            "Đặt lịch, thanh toán online nhanh chóng, thuận tiện"
     };
     @Override
     public int getCount() {
