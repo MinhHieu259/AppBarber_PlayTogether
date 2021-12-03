@@ -21,8 +21,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
-import com.example.appbarber.activity.DashboardActivity;
 import com.example.appbarber.activity.LoginActivity;
+import com.example.appbarber.activity.UserInfoActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,15 +95,16 @@ private Context context;
         txtEmail = view.findViewById(R.id.email);
         txtPassword = view.findViewById(R.id.pass);
         btn_signup = view.findViewById(R.id.btn_signup);
-
+        dialog = new ProgressDialog(getContext());
+        dialog.setCancelable(false);
         btn_signup.setOnClickListener(v->{
             register();
         });
     }
 
     private void register() {
-        //dialog.setMessage("Đang đăng ký...");
-        //dialog.show();
+        dialog.setMessage("Đang đăng ký...");
+        dialog.show();
         StringRequest request = new StringRequest(Request.Method.POST, Constaint.REGISTER, response -> {
             //get response if connection success
             try {
@@ -120,18 +121,18 @@ private Context context;
                     editor.putBoolean("isLoggedIn", true);
                     editor.apply();
                     // if Success
-                    startActivity(new Intent((LoginActivity)getContext(), DashboardActivity.class));
+                    startActivity(new Intent((LoginActivity)getContext(), UserInfoActivity.class));
                     ( (LoginActivity)getContext()).finish();
                     Toast.makeText(getContext(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-           // dialog.dismiss();
+            dialog.dismiss();
         }, error -> {
             // error if connection not success
             error.printStackTrace();
-            //dialog.dismiss();
+            dialog.dismiss();
         }){
             // add parameters
 

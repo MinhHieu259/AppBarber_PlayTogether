@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBarber">
         <activity
+            android:name=".activity.UserInfoActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.OnBoardActivity"
             android:exported="true" />
         <activity android:name=".activity.YeuThichActivity" />
