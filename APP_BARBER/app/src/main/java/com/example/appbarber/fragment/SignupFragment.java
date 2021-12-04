@@ -121,7 +121,7 @@ private Context context;
                     editor.putBoolean("isLoggedIn", true);
                     editor.apply();
                     // if Success
-                    startActivity(new Intent((LoginActivity)getContext(), UserInfoActivity.class));
+                    startActivity(new Intent(getContext(), UserInfoActivity.class));
                     ( (LoginActivity)getContext()).finish();
                     Toast.makeText(getContext(), "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                 }
