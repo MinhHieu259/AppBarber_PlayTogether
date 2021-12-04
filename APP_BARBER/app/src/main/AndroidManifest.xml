@@ -50,15 +50,6 @@
             android:name=".activity.ShowDetailSalonActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.AccountActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.NotiActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.CalendarActivity"
-            android:exported="true" />
-        <activity
             android:name=".activity.DashboardActivity"
             android:exported="true" />
         <activity

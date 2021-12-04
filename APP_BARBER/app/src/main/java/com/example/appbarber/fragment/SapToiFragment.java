@@ -13,8 +13,6 @@ import android.widget.ListView;
 
 import com.example.appbarber.Class.SalonNoti;
 import com.example.appbarber.R;
-import com.example.appbarber.activity.CalendarActivity;
-import com.example.appbarber.activity.NotiActivity;
 import com.example.appbarber.adapter.SaLonNotiAdapter;
 
 import java.util.ArrayList;
