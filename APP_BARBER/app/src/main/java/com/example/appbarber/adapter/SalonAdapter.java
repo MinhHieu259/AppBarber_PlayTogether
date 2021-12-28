@@ -12,9 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbarber.Class.Salon;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.example.appbarber.activity.ShowDetailSalonActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,7 +42,8 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
 
     @Override
     public void onBindViewHolder(@NonNull SalonViewHolder holder, @SuppressLint("RecyclerView") int position) {
-//    holder.setSalon(salons.get(position));
+        Salon salon = salons.get(position);
+        Picasso.get().load(Constaint.URL+"");
         holder.imagePoster.setImageResource(salons.get(position).getImage());
         holder.txtAddress.setText(salons.get(position).getAddress());
         holder.txtName.setText(salons.get(position).getName());
@@ -73,11 +76,6 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
             txtName = view.findViewById(R.id.textname);
             ratingBar = view.findViewById(R.id.ratingBar);
         }
-//        void setSalon(Salon salon){
-//            imagePoster.setImageResource(salon.image);
-//            txtAddress.setText(salon.address);
-//            txtName.setText(salon.name);
-//            ratingBar.setRating(salon.rating);
-//        }
+
     }
 }
