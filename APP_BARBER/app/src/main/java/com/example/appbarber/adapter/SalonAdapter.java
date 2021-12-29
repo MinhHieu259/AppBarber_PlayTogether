@@ -1,6 +1,7 @@
 package com.example.appbarber.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +19,15 @@ import com.example.appbarber.activity.ShowDetailSalonActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHolder> {
 
-    private final List<Salon> salons;
-
-    public SalonAdapter(List<Salon> salons) {
+    private final ArrayList<Salon> salons;
+    private Context context;
+    public SalonAdapter(Context context, ArrayList<Salon> salons) {
         this.salons = salons;
+        this.context = context;
     }
 
     @NonNull
@@ -43,11 +45,14 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
     @Override
     public void onBindViewHolder(@NonNull SalonViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Salon salon = salons.get(position);
-        Picasso.get().load(Constaint.URL+"");
-        holder.imagePoster.setImageResource(salons.get(position).getImage());
-        holder.txtAddress.setText(salons.get(position).getAddress());
-        holder.txtName.setText(salons.get(position).getName());
-        holder.ratingBar.setRating(salons.get(position).getRating());
+        Picasso.get().load(Constaint.URL+"storage/salon/"+salon.getImage()).into(holder.imagePoster);
+        holder.txtAddress.setText(salon.getAddress());
+        holder.txtName.setText(salon.getName());
+        holder.ratingBar.setRating(salon.getRating());
+//        holder.imagePoster.setImageResource(salons.get(position).getImage());
+//        holder.txtAddress.setText(salons.get(position).getAddress());
+//        holder.txtName.setText(salons.get(position).getName());
+//        holder.ratingBar.setRating(salons.get(position).getRating());
         holder.imagePoster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

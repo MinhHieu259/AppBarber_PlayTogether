@@ -14,17 +14,25 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.appbarber.Class.Dichvu;
 import com.example.appbarber.Class.Salon;
 import com.example.appbarber.Class.SalonhelperFeature;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.example.appbarber.activity.MapsActivity;
 import com.example.appbarber.adapter.SalonAdapter;
 import com.example.appbarber.adapter.noibatDichvuAdapter;
 import com.example.appbarber.adapter.noibatSalonAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -107,7 +115,8 @@ public class HomeFragment extends Fragment {
         noibatSalons.add(new SalonhelperFeature(R.drawable.naubarber, "Nâu barber Salon", "694 Trần Cao Vân"));
         adapter = new noibatSalonAdapter(noibatSalons);
         noibatRecycler.setAdapter(adapter);
-//        Drawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
+
+
     }
     private void dvNoibatRecycler() {
         dvnoibatRecycler.setHasFixedSize(true);
@@ -134,19 +143,47 @@ public class HomeFragment extends Fragment {
             page.setScaleY(0.85f + r * 0.15f);
         });
         salonViewPager.setPageTransformer(compositePageTransformer);
-        salonViewPager.setAdapter(new SalonAdapter(getSalons()));
+        salonViewPager.setAdapter(new SalonAdapter(getContext(), getSalons()));
     }
 
-    private List<Salon> getSalons(){
-        List<Salon> salons = new ArrayList<>();
-        Salon s30shine = new Salon("30Shine tiệm cắt tóc chuyên nghiệp", "40 Cao Thắng, Hải Châu, Đà Nẵng",
-                R.drawable.image30shine, 4.6f);
-        salons.add(s30shine);
+    private ArrayList<Salon> getSalons(){
+//        List<Salon> salons = new ArrayList<>();
+//        Salon s30shine = new Salon("30Shine tiệm cắt tóc chuyên nghiệp", "40 Cao Thắng, Hải Châu, Đà Nẵng",
+//                R.drawable.image30shine, 4.6f);
+//        salons.add(s30shine);
+//
+//
+//        Salon salonloc = new Salon("Salon Lộc","40 Trưng Nữ Vương", R.drawable.salonloc, 4.2f);
+//        salons.add(salonloc);
+        ArrayList<Salon> salons = new ArrayList<>();
+        StringRequest request = new StringRequest(Request.Method.POST, Constaint.GET_SALON_FEATURED, response -> {
 
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("salon"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject salonObject = array.getJSONObject(i);
+                        Salon salon = new Salon();
+                        salon.setName(salonObject.getString("tenSalon"));
+                        salon.setAddress(salonObject.getString("diachi"));
+                        salon.setImage(salonObject.getString("hinhanh"));
+                        salon.setRating(salonObject.getInt("danhgia"));
+                        salons.add(salon);
 
-        Salon salonloc = new Salon("Salon Lộc","40 Trưng Nữ Vương", R.drawable.salonloc, 4.2f);
-        salons.add(salonloc);
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
 
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
         return salons;
     }
 }
