@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout lngantoi, lnbando;
     private  RecyclerView noibatRecycler, dvnoibatRecycler;
     private  RecyclerView.Adapter adapter;
+    private ArrayList<Salon> salons;
     private View view;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -143,19 +144,7 @@ public class HomeFragment extends Fragment {
             page.setScaleY(0.85f + r * 0.15f);
         });
         salonViewPager.setPageTransformer(compositePageTransformer);
-        salonViewPager.setAdapter(new SalonAdapter(getContext(), getSalons()));
-    }
-
-    private ArrayList<Salon> getSalons(){
-//        List<Salon> salons = new ArrayList<>();
-//        Salon s30shine = new Salon("30Shine tiệm cắt tóc chuyên nghiệp", "40 Cao Thắng, Hải Châu, Đà Nẵng",
-//                R.drawable.image30shine, 4.6f);
-//        salons.add(s30shine);
-//
-//
-//        Salon salonloc = new Salon("Salon Lộc","40 Trưng Nữ Vương", R.drawable.salonloc, 4.2f);
-//        salons.add(salonloc);
-        ArrayList<Salon> salons = new ArrayList<>();
+        salons = new ArrayList<>();
         StringRequest request = new StringRequest(Request.Method.POST, Constaint.GET_SALON_FEATURED, response -> {
 
             try {
@@ -172,6 +161,7 @@ public class HomeFragment extends Fragment {
                         salons.add(salon);
 
                     }
+                    salonViewPager.setAdapter(new SalonAdapter(getContext(), salons));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -184,6 +174,6 @@ public class HomeFragment extends Fragment {
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(request);
-        return salons;
+
     }
 }

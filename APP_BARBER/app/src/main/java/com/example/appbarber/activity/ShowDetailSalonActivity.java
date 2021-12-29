@@ -9,8 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.squareup.picasso.Picasso;
 
 public class ShowDetailSalonActivity extends AppCompatActivity {
 TextView nameSalon, diachi, name2;
@@ -26,8 +28,9 @@ Button btnDatLich;
         diachi = findViewById(R.id.txtDiachi);
         image = findViewById(R.id.image_detail_salon);
         btnDatLich = findViewById(R.id.btn_datlich);
+        Picasso.get().load(Constaint.URL+"storage/salon/"+getIntent().getStringExtra("image")).into(image);
         nameSalon.setText(getIntent().getStringExtra("name"));
-        image.setImageResource(getIntent().getIntExtra("image", 0));
+        //image.setImageResource(getIntent().getIntExtra("image", 0));
         diachi.setText(getIntent().getStringExtra("address"));
         name2.setText(getIntent().getStringExtra("name"));
         btnDatLich.setOnClickListener(new View.OnClickListener() {
