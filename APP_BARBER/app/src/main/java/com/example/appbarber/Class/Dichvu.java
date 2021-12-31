@@ -11,6 +11,22 @@ public class Dichvu {
         this.tensalon = tensalon;
     }
 
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public void setTendv(String tendv) {
+        this.tendv = tendv;
+    }
+
+    public void setGia(String gia) {
+        this.gia = gia;
+    }
+
+    public void setTensalon(String tensalon) {
+        this.tensalon = tensalon;
+    }
+
     public int getImage() {
         return image;
     }

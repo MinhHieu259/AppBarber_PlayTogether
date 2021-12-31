@@ -145,7 +145,7 @@ public class HomeFragment extends Fragment {
         });
         salonViewPager.setPageTransformer(compositePageTransformer);
         salons = new ArrayList<>();
-        StringRequest request = new StringRequest(Request.Method.POST, Constaint.GET_SALON_FEATURED, response -> {
+        StringRequest request = new StringRequest(Request.Method.POST, Constaint.GET_SALON, response -> {
 
             try {
                 JSONObject object = new JSONObject(response);

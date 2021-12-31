@@ -10,6 +10,18 @@ public class SalonhelperFeature {
         this.address = address;
     }
 
+    public void setImage(int image) {
+        this.image = image;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public int getImage() {
         return image;
     }
