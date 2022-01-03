@@ -1,19 +1,12 @@
 package com.example.appbarber.Class;
 
 public class Dichvu {
-    int image;
+    String image;
     String tendv, gia, tensalon;
 
-    public Dichvu(int image, String tendv, String gia, String tensalon) {
-        this.image = image;
-        this.tendv = tendv;
-        this.gia = gia;
-        this.tensalon = tensalon;
-    }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
+
+
 
     public void setTendv(String tendv) {
         this.tendv = tendv;
@@ -27,8 +20,12 @@ public class Dichvu {
         this.tensalon = tensalon;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTendv() {

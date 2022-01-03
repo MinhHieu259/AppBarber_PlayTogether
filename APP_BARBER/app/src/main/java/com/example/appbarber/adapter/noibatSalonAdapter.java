@@ -1,5 +1,6 @@
 package com.example.appbarber.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbarber.Class.SalonhelperFeature;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.noibatViewHolder> {
     ArrayList<SalonhelperFeature> noibatSalons;
-
-    public noibatSalonAdapter(ArrayList<SalonhelperFeature> noibatSalons) {
+    private Context context;
+    public noibatSalonAdapter(Context context, ArrayList<SalonhelperFeature> noibatSalons) {
         this.noibatSalons = noibatSalons;
+        this.context = context;
     }
 
     @NonNull
@@ -32,7 +36,7 @@ public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.
     @Override
     public void onBindViewHolder(@NonNull noibatViewHolder holder, int position) {
      SalonhelperFeature salonhelperClasss = noibatSalons.get(position);
-     holder.image.setImageResource(salonhelperClasss.getImage());
+     Picasso.get().load(Constaint.URL+"storage/salon/"+salonhelperClasss.getImage()).into(holder.image);
      holder.title.setText(salonhelperClasss.getTitle());
      holder.address.setText(salonhelperClasss.getAddress());
     }

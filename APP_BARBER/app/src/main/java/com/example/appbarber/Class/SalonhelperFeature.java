@@ -1,16 +1,15 @@
 package com.example.appbarber.Class;
 
 public class SalonhelperFeature {
-    int  image;
+    String  image;
     String title, address;
 
-    public SalonhelperFeature(int image, String title, String address) {
-        this.image = image;
-        this.title = title;
-        this.address = address;
+
+    public String getImage() {
+        return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -22,9 +21,7 @@ public class SalonhelperFeature {
         this.address = address;
     }
 
-    public int getImage() {
-        return image;
-    }
+
 
     public String getTitle() {
         return title;

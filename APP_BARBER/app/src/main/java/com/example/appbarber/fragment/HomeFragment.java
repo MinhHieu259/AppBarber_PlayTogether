@@ -44,6 +44,8 @@ public class HomeFragment extends Fragment {
     private  RecyclerView noibatRecycler, dvnoibatRecycler;
     private  RecyclerView.Adapter adapter;
     private ArrayList<Salon> salons;
+    ArrayList<Dichvu> dichvus;
+    ArrayList<SalonhelperFeature> noibatSalons;
     private View view;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -110,24 +112,73 @@ public class HomeFragment extends Fragment {
     private void noibatRecycler() {
         noibatRecycler.setHasFixedSize(true);
         noibatRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        ArrayList<SalonhelperFeature> noibatSalons = new ArrayList<>();
-        noibatSalons.add(new SalonhelperFeature(R.drawable.luxuryman, "Luxury Salon", "60 Điện Biên Phủ"));
-        noibatSalons.add(new SalonhelperFeature(R.drawable.toclangtu, "Lãng tử Salon", "41 Phạm Văn Nghị"));
-        noibatSalons.add(new SalonhelperFeature(R.drawable.naubarber, "Nâu barber Salon", "694 Trần Cao Vân"));
-        adapter = new noibatSalonAdapter(noibatSalons);
-        noibatRecycler.setAdapter(adapter);
+        noibatSalons = new ArrayList<>();
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_SALON_FEATURE, response -> {
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("salon"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject salonObject = array.getJSONObject(i);
+                        SalonhelperFeature salon = new SalonhelperFeature();
+                        salon.setTitle(salonObject.getString("tenSalon"));
+                        salon.setAddress(salonObject.getString("diachi"));
+                        salon.setImage(salonObject.getString("hinhanh"));
+
+                        noibatSalons.add(salon);
+
+                    }
+                    noibatRecycler.setAdapter(new noibatSalonAdapter(getContext(), noibatSalons));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
+
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
 
 
     }
     private void dvNoibatRecycler() {
         dvnoibatRecycler.setHasFixedSize(true);
         dvnoibatRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        ArrayList<Dichvu> dichvus = new ArrayList<>();
-        dichvus.add(new Dichvu(R.drawable.combo10buoc30shine, "Combo 10 bước", "80K", "30Shine"));
-        dichvus.add(new Dichvu(R.drawable.cb10buocluxury, "Combo 10 bước", "100K", "Luxury Salon"));
-        dichvus.add(new Dichvu(R.drawable.uonhan8capdo, "Uốn hàn quốc 8 cấp", "260K", "30Shine"));
-        adapter = new noibatDichvuAdapter(dichvus);
-        dvnoibatRecycler.setAdapter(adapter);
+        dichvus = new ArrayList<>();
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_DICHVU, response -> {
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("dichvu"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject dichvuObject = array.getJSONObject(i);
+                        Dichvu dichvu = new Dichvu();
+                        dichvu.setTendv(dichvuObject.getString("tenDichvu"));
+                        dichvu.setGia(dichvuObject.getString("giaTien"));
+                        dichvu.setImage(dichvuObject.getString("hinhanh"));
+                        dichvu.setTensalon(dichvuObject.getString("tensalon"));
+                        dichvus.add(dichvu);
+
+                    }
+                    dvnoibatRecycler.setAdapter(new noibatDichvuAdapter(getContext(), dichvus));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
+
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+
 //        Drawable gradient1 = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
     }
 
