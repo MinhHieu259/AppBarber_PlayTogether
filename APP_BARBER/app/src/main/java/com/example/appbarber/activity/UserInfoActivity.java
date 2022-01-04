@@ -36,8 +36,8 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserInfoActivity extends AppCompatActivity {
-    private TextInputLayout layoutName, layoutLastName;
-    private TextInputEditText txtName, txtLastName;
+    private TextInputLayout layoutName, layoutLastName, layoutPhone, layoutAddress;
+    private TextInputEditText txtName, txtLastName, txtPhone, txtAddress;
     private Button btn_continue;
     private TextView txtSelectedPhoto;
     private CircleImageView circleImageView;
@@ -57,8 +57,12 @@ public class UserInfoActivity extends AppCompatActivity {
         userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         layoutName = findViewById(R.id.txtLayoutNameUserInfo);
         layoutLastName = findViewById(R.id.txtLayoutLastNameUserInfo);
+        layoutPhone = findViewById(R.id.txtLayoutPhoneUserInfo);
+        layoutAddress = findViewById(R.id.txtLayoutAddressUserInfo);
         txtName = findViewById(R.id.txtNameUserInfo);
         txtLastName = findViewById(R.id.txtLastNameUserInfo);
+        txtPhone = findViewById(R.id.txtPhoneUserInfo);
+        txtAddress = findViewById(R.id.txtAddressUserInfo);
         txtSelectedPhoto = findViewById(R.id.txtSelectPhoto);
         btn_continue = findViewById(R.id.btn_Continue);
         circleImageView = findViewById(R.id.imgUserInfo);
@@ -103,6 +107,16 @@ public class UserInfoActivity extends AppCompatActivity {
             layoutLastName.setError("Tên không được để trống");
             return false;
         }
+        if (txtPhone.getText().toString().isEmpty()){
+            layoutPhone.setErrorEnabled(true);
+            layoutPhone.setError("Số điện thoại không được để trống");
+            return false;
+        }
+        if (txtAddress.getText().toString().isEmpty()){
+            layoutAddress.setErrorEnabled(true);
+            layoutAddress.setError("Địa chỉ không được để trống");
+            return false;
+        }
 
         return true;
     }
@@ -111,6 +125,8 @@ public class UserInfoActivity extends AppCompatActivity {
         dialog.show();
         String name = txtName.getText().toString().trim();
         String lastname = txtLastName.getText().toString().trim();
+        String phone = txtPhone.getText().toString().trim();
+        String address = txtAddress.getText().toString().trim();
         StringRequest request = new StringRequest(Request.Method.POST, Constaint.SAVE_USER_INFO, response -> {
             try {
                 JSONObject object = new JSONObject(response);
@@ -146,6 +162,8 @@ public class UserInfoActivity extends AppCompatActivity {
                 HashMap<String,String> map = new HashMap<>();
                 map.put("name", name);
                 map.put("lastname", lastname);
+                map.put("phone", phone);
+                map.put("address", address);
                 map.put("photo",bitmapToString(bitmap));
                 return  map;
             }
