@@ -1,8 +1,10 @@
 package com.example.appbarber.activity;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.example.appbarber.R;
 
 public class EditUserInfoActivity extends AppCompatActivity {
 
