@@ -127,7 +127,7 @@
         >
 
         <Button
-            android:id="@+id/btn_tieptuc"
+            android:id="@+id/btn_dangxuat"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"

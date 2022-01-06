@@ -1,12 +1,15 @@
 package com.example.appbarber.fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,7 +22,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
+import com.example.appbarber.activity.DashboardActivity;
 import com.example.appbarber.activity.EditUserInfoActivity;
+import com.example.appbarber.activity.LoginActivity;
 import com.example.appbarber.activity.YeuThichActivity;
 import com.squareup.picasso.Picasso;
 
@@ -42,6 +47,7 @@ public class TaiKhoanFragment extends Fragment {
     private CircleImageView imgProfile;
     private String imgUrl = "";
     private View view;
+    private Button btn_dangxuat;
     private SharedPreferences preferences;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -106,23 +112,42 @@ public class TaiKhoanFragment extends Fragment {
         txtPhone = view.findViewById(R.id.tvNumberPhone);
         txtAddress = view.findViewById(R.id.tvDiaChiUser);
         imgProfile = view.findViewById(R.id.imageOfUserName);
-        getData();
+
+        btn_dangxuat = view.findViewById(R.id.btn_dangxuat);
+        btn_dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Bạn có chắc muốn đăng xuất ?");
+                builder.setPositiveButton("Đăng xuất", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        logout();
+                    }
+                });
+                builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.show();
+            }
+        });
+
         return view;
     }
 
-    private void getData() {
-        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_INFO_USER, res->{
-
+    private void logout(){
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.LOGOUT, res->{
             try {
                 JSONObject object = new JSONObject(res);
                 if (object.getBoolean("success")){
-                    JSONObject user = object.getJSONObject("user");
-                    String name = user.getString("name");
-                    String lastname = user.getString("lastname");
-                    tvUsername.setText(name+" "+ lastname);
-                    txtPhone.setText(user.getString("phone"));
-                    txtAddress.setText(user.getString("address"));
-                    Picasso.get().load(Constaint.URL+"storage/profiles/"+user.getString("photo")).into(imgProfile);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    startActivity(new Intent((DashboardActivity)getContext(), LoginActivity.class));
+                    ((DashboardActivity)getContext()).finish();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -140,5 +165,44 @@ public class TaiKhoanFragment extends Fragment {
         };
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(request);
+    }
+
+    private void getData() {
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_INFO_USER, res->{
+
+            try {
+                JSONObject object = new JSONObject(res);
+                if (object.getBoolean("success")){
+                    JSONObject user = object.getJSONObject("user");
+                    String name = user.getString("name");
+                    String lastname = user.getString("lastname");
+                    tvUsername.setText(name+" "+ lastname);
+                    txtPhone.setText(user.getString("phone"));
+                    txtAddress.setText(user.getString("address"));
+                    Picasso.get().load(Constaint.URL+"storage/profiles/"+user.getString("photo")).into(imgProfile);
+                    imgUrl = Constaint.URL+"storage/profiles/"+user.getString("photo");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String token = preferences.getString("token", "");
+                HashMap<String,String> map = new HashMap<>();
+                map.put("Authorization","Bearer "+token);
+                return map;
+            }
+        };
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getData();
     }
 }

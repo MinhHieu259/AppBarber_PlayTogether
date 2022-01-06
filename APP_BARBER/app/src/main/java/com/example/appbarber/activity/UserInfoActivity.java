@@ -133,6 +133,8 @@ public class UserInfoActivity extends AppCompatActivity {
                 if (object.getBoolean("success")){
                     SharedPreferences.Editor editor = userPref.edit();
                     editor.putString("photo", object.getString("photo"));
+                    editor.putString("phone", phone);
+                    editor.putString("address", address);
                     editor.apply();
                     startActivity(new Intent(UserInfoActivity.this, DashboardActivity.class));
                     finish();
