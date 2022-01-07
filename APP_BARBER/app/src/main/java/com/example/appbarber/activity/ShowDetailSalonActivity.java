@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -23,11 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class ShowDetailSalonActivity extends AppCompatActivity {
-TextView nameSalon, diachi, name2, txtSoNam, txtSoCho;
+TextView nameSalon, diachi, name2, txtSoNam, txtSoCho, txtChuTiem, txtGioiThieu;
 RoundedImageView image;
 Button btnDatLich;
 private int id_salon = 0;
@@ -41,6 +37,8 @@ private int id_salon = 0;
         diachi = findViewById(R.id.txtDiachi);
         txtSoCho = findViewById(R.id.txtSoCho);
         txtSoNam = findViewById(R.id.txtSoNam);
+        txtChuTiem = findViewById(R.id.txtTenChutiem);
+        txtGioiThieu = findViewById(R.id.txtGioithieu);
         image = findViewById(R.id.image_detail_salon);
         btnDatLich = findViewById(R.id.btn_datlich);
         id_salon = getIntent().getIntExtra("salonId", 0);
@@ -56,36 +54,45 @@ private int id_salon = 0;
         });
     }
     public void getInFoSalon(){
-        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_SALON_BY_ID, response -> {
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_SALON_BY_ID+"/"+id_salon, res->{
+
             try {
-                    JSONObject object = new JSONObject(response);
-                    if (object.getBoolean("success")) {
-                        JSONArray array = new JSONArray(object.getString("salon"));
+                JSONObject object = new JSONObject(res);
+                if (object.getBoolean("success")){
+                    JSONArray salonarray = new JSONArray(object.getString("salon"));
+                    JSONObject salonobject = salonarray.getJSONObject(0);
+                    String namesalon = salonobject.getString("tenSalon");
+                    String name2salon = salonobject.getString("tenSalon");
+                    String diaChi = salonobject.getString("diachi");
+                    String soCho = salonobject.getString("soChoNgoi");
+                    String soNam = salonobject.getString("soNamThanhLap");
+                    String imageSalon = salonobject.getString("hinhanh");
+                    String chuTiem = salonobject.getString("chuTiem");
+                    String gioiThieu = salonobject.getString("gioiThieu");
+                    nameSalon.setText(namesalon);
+                    name2.setText(name2salon);
+                    diachi.setText(diaChi);
+                    txtSoCho.setText(soCho);
+                    txtSoNam.setText(soNam);
+                    txtChuTiem.setText(chuTiem);
+                    txtGioiThieu.setText(gioiThieu);
+                    Picasso.get().load(Constaint.URL+"storage/salon/"+imageSalon).into(image);
 
-                        JSONObject salonObject = array.getJSONObject(0);
-                        Picasso.get().load(Constaint.URL + "storage/salon/" + salonObject.getString("hinhanh")).into(image);
-                        nameSalon.setText(salonObject.getString("tenSalon"));
-                        diachi.setText(salonObject.getString("diachi"));
-                        name2.setText(salonObject.getString("tenSalon"));
-                        txtSoNam.setText(salonObject.getString("soNamThanhLap"));
-                        txtSoCho.setText(salonObject.getString("soChoNgoi"));
-
-                    }
+                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
         }, error -> {
             error.printStackTrace();
         }){
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> map = new HashMap<>();
-                map.put("id_salon", id_salon+"");
-                return map;
-            }
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                HashMap<String,String> map = new HashMap<>();
+//                map.put("id_salon", id_salon+"");
+//                return map;
+//            }
         };
-        RequestQueue queue = Volley.newRequestQueue(ShowDetailSalonActivity.this);
+        RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(request);
     }
 
