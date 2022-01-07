@@ -57,9 +57,9 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(holder.itemView.getContext(), ShowDetailSalonActivity.class);
-                intent.putExtra("name", salons.get(position).name);
-                intent.putExtra("image", salons.get(position).image);
-                intent.putExtra("address", salons.get(position).address);
+                intent.putExtra("salonId", salon.getId());
+//                intent.putExtra("image", salons.get(position).image);
+//                intent.putExtra("address", salons.get(position).address);
                 holder.itemView.getContext().startActivity(intent);
             }
         });

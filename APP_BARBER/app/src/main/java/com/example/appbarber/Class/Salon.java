@@ -2,6 +2,7 @@ package com.example.appbarber.Class;
 
 public class Salon {
     public String name, address;
+    public int id;
     public String image;
     public float rating;
 
@@ -12,6 +13,14 @@ public class Salon {
 //        this.rating = rating;
 //    }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name = name;

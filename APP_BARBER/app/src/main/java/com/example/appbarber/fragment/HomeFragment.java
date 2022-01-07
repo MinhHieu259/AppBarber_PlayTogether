@@ -205,6 +205,7 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i< array.length(); i++){
                         JSONObject salonObject = array.getJSONObject(i);
                         Salon salon = new Salon();
+                        salon.setId(salonObject.getInt("id"));
                         salon.setName(salonObject.getString("tenSalon"));
                         salon.setAddress(salonObject.getString("diachi"));
                         salon.setImage(salonObject.getString("hinhanh"));
