@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appbarber.Class.NhanVienItemSpinner;
 import com.example.appbarber.R;
 import com.example.appbarber.adapter.NhanVienSpinnerAdapter;
 
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 public class XacNhanActivity extends AppCompatActivity {
 private ArrayList nhanVienLists;
 private NhanVienSpinnerAdapter nhanVienSpinnerAdapter;
+private Spinner spinnerNhanVien;
 TextView ngayDat;
 TextView gio;
     @Override
@@ -22,7 +22,7 @@ TextView gio;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xac_nhan);
         initNhanVienList();
-        Spinner spinnerNhanVien = findViewById(R.id.spinnerNhanVien);
+        spinnerNhanVien = findViewById(R.id.spinnerNhanVien);
         nhanVienSpinnerAdapter = new NhanVienSpinnerAdapter(this, nhanVienLists);
         spinnerNhanVien.setAdapter(nhanVienSpinnerAdapter);
         ngayDat = findViewById(R.id.txtNgayDat);
@@ -35,7 +35,7 @@ TextView gio;
 
     private void initNhanVienList() {
         nhanVienLists = new ArrayList<>();
-        nhanVienLists.add(new NhanVienItemSpinner("Nguyễn Minh Hiếu", "Thợ Cắt"));
-        nhanVienLists.add(new NhanVienItemSpinner("Ngô Văn Thuần", "Thợ Cắt"));
+//        nhanVienLists.add(new NhanVienItemSpinner("Nguyễn Minh Hiếu", "Thợ Cắt"));
+//        nhanVienLists.add(new NhanVienItemSpinner("Ngô Văn Thuần", "Thợ Cắt"));
     }
 }

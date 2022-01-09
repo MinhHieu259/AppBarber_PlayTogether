@@ -6,16 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".activity.XacNhanActivity"
     android:background="@drawable/radius_back">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Xác Nhận Đặt Lịch"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="20dp"
-    android:textSize="20sp"
-    android:id="@+id/labelXacnhan"
-    android:textColor="@color/black"
-    android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/labelXacnhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bangers"
+        android:text="Xác Nhận Đặt Lịch"
+        android:textColor="@color/blue_main"
+        android:textSize="20sp"
+        android:textStyle="bold" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thời gian"
-                android:textColor="#808080"
+                android:fontFamily="@font/leckerlione_regular"
+                android:textColor="@color/blue_main"
                 />
             <TextView
                 android:layout_width="wrap_content"
@@ -62,8 +65,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/leckerlione_regular"
                 android:text="Nhân Viên"
-                android:textColor="#808080"
+                android:textColor="@color/blue_main"
                 />
             <Spinner
                 android:layout_width="match_parent"
@@ -81,7 +85,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dịch vụ đã chọn"
-                android:textColor="#808080"/>
+                android:fontFamily="@font/leckerlione_regular"
+                android:textColor="@color/blue_main"/>
             <TextView
                 android:id="@+id/dichvuDachon"
                 android:layout_width="wrap_content"

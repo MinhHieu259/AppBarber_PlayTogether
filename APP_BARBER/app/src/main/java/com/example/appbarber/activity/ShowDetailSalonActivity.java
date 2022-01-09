@@ -49,6 +49,7 @@ private int id_salon = 0;
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ShowDetailSalonActivity.this, DatLichActivity.class);
+                intent.putExtra("id_salon", id_salon);
                 startActivity(intent);
             }
         });

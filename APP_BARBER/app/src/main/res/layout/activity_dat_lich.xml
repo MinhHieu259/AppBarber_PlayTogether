@@ -24,8 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chọn thời gian"
+            android:fontFamily="@font/leckerlione_regular"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/blue_main"
             android:layout_marginLeft="40dp"
             android:textSize="18sp"
             />
@@ -123,7 +124,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:text="Chọn dịch vụ"
-            android:textColor="@color/black"
+            android:fontFamily="@font/leckerlione_regular"
+            android:textColor="@color/blue_main"
             android:textSize="18sp"
             android:textStyle="bold" />
 

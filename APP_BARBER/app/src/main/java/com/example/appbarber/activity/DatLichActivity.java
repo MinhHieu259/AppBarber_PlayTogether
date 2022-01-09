@@ -14,35 +14,48 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.appbarber.Class.DichvuItemSpinner;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.example.appbarber.adapter.DichvuSpinnerAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class DatLichActivity extends AppCompatActivity {
 private ArrayList<DichvuItemSpinner> dichvuLists;
 private DichvuSpinnerAdapter dichvuSpinnerAdapter;
+private Spinner spinnerDichvu;
+private int id_dichvu = 0;
 CalendarView calendarView;
 RadioGroup radioGroupTime;
+private int id_salon = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dat_lich);
-        initListDvSpinner();
+        id_salon = getIntent().getIntExtra("id_salon", 0);
+
         TextView textViewHidden = findViewById(R.id.textViewHidden);
         textViewHidden.setVisibility(View.INVISIBLE);
         TextView textViewTimeHidden = findViewById(R.id.textHiddenTime);
         textViewTimeHidden.setVisibility(View.INVISIBLE);
-        Spinner spinnerDichvu = findViewById(R.id.spinnerDV);
-        dichvuSpinnerAdapter = new DichvuSpinnerAdapter(this, dichvuLists);
-        spinnerDichvu.setAdapter(dichvuSpinnerAdapter);
+        spinnerDichvu = findViewById(R.id.spinnerDV);
+        initListDvSpinner();
+
         Button btnTieptuc = findViewById(R.id.btn_tieptuc);
         calendarView = findViewById(R.id.calendar);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                textViewHidden.setText(i2 + "/" + i1 + "/" +i);
+                textViewHidden.setText( i + "-" +i2 + "-" + i1+1);
             }
         });
         radioGroupTime = findViewById(R.id.radioGrTime);
@@ -57,13 +70,14 @@ RadioGroup radioGroupTime;
         });
         TextView tenDV = findViewById(R.id.textHiddenDV);
         tenDV.setVisibility(View.INVISIBLE);
-        Spinner spinnerDV = findViewById(R.id.spinnerDV);
+
         spinnerDichvu.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 DichvuItemSpinner dichvuItemSpinner = (DichvuItemSpinner) adapterView.getItemAtPosition(i);
                 String dvnhan = dichvuItemSpinner.getTenDichvu();
                 tenDV.setText(dvnhan);
+                id_dichvu = dichvuItemSpinner.getId_dichvu();
             }
 
             @Override
@@ -78,6 +92,7 @@ RadioGroup radioGroupTime;
                 intent.putExtra("gio", textViewTimeHidden.getText());
                 intent.putExtra("ngayDat", textViewHidden.getText());
                 intent.putExtra("dichvu", tenDV.getText());
+                intent.putExtra("id_dichvu", id_dichvu);
                 startActivity(intent);
             }
         });
@@ -86,9 +101,40 @@ RadioGroup radioGroupTime;
 
     private void initListDvSpinner() {
         dichvuLists = new ArrayList<>();
-        dichvuLists.add(new DichvuItemSpinner("Cắt tóc", 20, 50000));
-        dichvuLists.add(new DichvuItemSpinner("Combo 10 bước", 45, 100000));
-        dichvuLists.add(new DichvuItemSpinner("Combo 7 bước", 30, 80000));
-        dichvuLists.add(new DichvuItemSpinner("Nhuộm tóc", 60, 200000));
+//        dichvuLists.add(new DichvuItemSpinner("Cắt tóc", 20, 50000));
+//        dichvuLists.add(new DichvuItemSpinner("Combo 10 bước", 45, 100000));
+//        dichvuLists.add(new DichvuItemSpinner("Combo 7 bước", 30, 80000));
+//        dichvuLists.add(new DichvuItemSpinner("Nhuộm tóc", 60, 200000));
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_DICHVU_BY_SALON+"/"+id_salon, response -> {
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("dichvu"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject dichvuObject = array.getJSONObject(i);
+                        DichvuItemSpinner dichvuItemSpinner = new DichvuItemSpinner();
+                        dichvuItemSpinner.setId_dichvu(dichvuObject.getInt("id"));
+                        dichvuItemSpinner.setTenDichvu(dichvuObject.getString("tenDichvu"));
+                        dichvuItemSpinner.setThoigian(dichvuObject.getInt("thoiGian"));
+                        dichvuItemSpinner.setGia(dichvuObject.getInt("giaTien"));
+                        dichvuLists.add(dichvuItemSpinner);
+
+                    }
+                    dichvuSpinnerAdapter = new DichvuSpinnerAdapter(this, dichvuLists);
+                    spinnerDichvu.setAdapter(dichvuSpinnerAdapter);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
+
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
+
     }
 }
