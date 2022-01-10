@@ -49,17 +49,11 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         holder.txtAddress.setText(salon.getAddress());
         holder.txtName.setText(salon.getName());
         holder.ratingBar.setRating(salon.getRating());
-//        holder.imagePoster.setImageResource(salons.get(position).getImage());
-//        holder.txtAddress.setText(salons.get(position).getAddress());
-//        holder.txtName.setText(salons.get(position).getName());
-//        holder.ratingBar.setRating(salons.get(position).getRating());
         holder.imagePoster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(holder.itemView.getContext(), ShowDetailSalonActivity.class);
                 intent.putExtra("salonId", salon.getId());
-//                intent.putExtra("image", salons.get(position).image);
-//                intent.putExtra("address", salons.get(position).address);
                 holder.itemView.getContext().startActivity(intent);
             }
         });

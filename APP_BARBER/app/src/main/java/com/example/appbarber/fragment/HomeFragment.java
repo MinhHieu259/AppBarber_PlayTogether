@@ -123,8 +123,8 @@ public class HomeFragment extends Fragment {
                         JSONObject salonObject = array.getJSONObject(i);
                         SalonhelperFeature salon = new SalonhelperFeature();
                         salon.setTitle(salonObject.getString("tenSalon"));
-                        salon.setAddress(salonObject.getString("diachi"));
-                        salon.setImage(salonObject.getString("hinhanh"));
+                        salon.setAddress(salonObject.getString("diaChi"));
+                        salon.setImage(salonObject.getString("hinhAnh"));
 
                         noibatSalons.add(salon);
 
@@ -207,9 +207,9 @@ public class HomeFragment extends Fragment {
                         Salon salon = new Salon();
                         salon.setId(salonObject.getInt("id"));
                         salon.setName(salonObject.getString("tenSalon"));
-                        salon.setAddress(salonObject.getString("diachi"));
-                        salon.setImage(salonObject.getString("hinhanh"));
-                        salon.setRating(salonObject.getInt("danhgia"));
+                        salon.setAddress(salonObject.getString("diaChi"));
+                        salon.setImage(salonObject.getString("hinhAnh"));
+                        salon.setRating(salonObject.getInt("danhGia"));
                         salons.add(salon);
 
                     }

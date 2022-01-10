@@ -64,10 +64,10 @@ private int id_salon = 0;
                     JSONObject salonobject = salonarray.getJSONObject(0);
                     String namesalon = salonobject.getString("tenSalon");
                     String name2salon = salonobject.getString("tenSalon");
-                    String diaChi = salonobject.getString("diachi");
+                    String diaChi = salonobject.getString("diaChi");
                     String soCho = salonobject.getString("soChoNgoi");
                     String soNam = salonobject.getString("soNamThanhLap");
-                    String imageSalon = salonobject.getString("hinhanh");
+                    String imageSalon = salonobject.getString("hinhAnh");
                     String chuTiem = salonobject.getString("chuTiem");
                     String gioiThieu = salonobject.getString("gioiThieu");
                     nameSalon.setText(namesalon);
@@ -86,12 +86,7 @@ private int id_salon = 0;
         }, error -> {
             error.printStackTrace();
         }){
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                HashMap<String,String> map = new HashMap<>();
-//                map.put("id_salon", id_salon+"");
-//                return map;
-//            }
+
         };
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(request);
