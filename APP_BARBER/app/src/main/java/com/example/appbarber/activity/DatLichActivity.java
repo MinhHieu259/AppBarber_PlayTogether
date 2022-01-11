@@ -1,6 +1,8 @@
 package com.example.appbarber.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,10 +12,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -28,6 +32,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class DatLichActivity extends AppCompatActivity {
 private ArrayList<DichvuItemSpinner> dichvuLists;
@@ -36,13 +42,14 @@ private Spinner spinnerDichvu;
 private int id_dichvu = 0;
 CalendarView calendarView;
 RadioGroup radioGroupTime;
+    private SharedPreferences userPref;
 private int id_salon = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dat_lich);
         id_salon = getIntent().getIntExtra("id_salon", 0);
-
+        userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         TextView textViewHidden = findViewById(R.id.textViewHidden);
         textViewHidden.setVisibility(View.INVISIBLE);
         TextView textViewTimeHidden = findViewById(R.id.textHiddenTime);
@@ -109,6 +116,7 @@ private int id_salon = 0;
 
             try {
                 JSONObject object = new JSONObject(response);
+                Toast.makeText(DatLichActivity.this, object+"", Toast.LENGTH_SHORT).show();
                 if (object.getBoolean("success")){
                     JSONArray array = new JSONArray(object.getString("dichvu"));
                     for (int i = 0; i< array.length(); i++){
@@ -130,7 +138,13 @@ private int id_salon = 0;
         }, error -> {
             error.printStackTrace();
         }){
-
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String token = userPref.getString("token", "");
+                HashMap<String,String> map = new HashMap<>();
+                map.put("Authorization", "Bearer "+token);
+                return map;
+            }
         };
 
         RequestQueue queue = Volley.newRequestQueue(this);
