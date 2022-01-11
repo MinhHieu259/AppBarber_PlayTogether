@@ -17,4 +17,5 @@ public class Constaint {
     public static final String GET_DICHVU_BY_SALON= HOME+"/getDichVuBySalon";
     public static final String YEU_THICH= HOME+"/YeuThich";
     public static final String DAT_LICH= HOME+"/DatLich";
+    public static final String GET_LICHHEN_SAP_TOI= HOME+"/getLichHenSapToi";
 }

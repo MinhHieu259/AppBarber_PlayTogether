@@ -1,33 +1,39 @@
 package com.example.appbarber.Class;
 
 public class SalonNoti {
-    private int hinhAnh;
+    private int id_lichhen;
+    private String hinhAnh;
     private String nhanVienCatToc;
     private String tenSalon;
     private String thoiGian;
     private String diaChi;
     private String dichVu;
-    private double phiCatToc;
+    private String phiCatToc;
     private String thoiGianDuKienDichVu;
-    private int trangThai;
+    private String chuTiem;
+    private String trangThai;
 
-    public SalonNoti(int hinhAnh, String nhanVienCatToc, String tenSalon, String thoiGian, String diaChi, String dichVu, double phiCatToc, String thoiGianDuKienDichVu, int trangThai) {
-        this.hinhAnh = hinhAnh;
-        this.nhanVienCatToc = nhanVienCatToc;
-        this.tenSalon = tenSalon;
-        this.thoiGian = thoiGian;
-        this.diaChi = diaChi;
-        this.dichVu = dichVu;
-        this.phiCatToc = phiCatToc;
-        this.thoiGianDuKienDichVu = thoiGianDuKienDichVu;
-        this.trangThai = trangThai;
+    public String getChuTiem() {
+        return chuTiem;
     }
 
-    public int getHinhAnh() {
+    public void setChuTiem(String chuTiem) {
+        this.chuTiem = chuTiem;
+    }
+
+    public int getId_lichhen() {
+        return id_lichhen;
+    }
+
+    public void setId_lichhen(int id_lichhen) {
+        this.id_lichhen = id_lichhen;
+    }
+
+    public String getHinhAnh() {
         return hinhAnh;
     }
 
-    public void setHinhAnh(int hinhAnh) {
+    public void setHinhAnh(String hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
 
@@ -71,11 +77,11 @@ public class SalonNoti {
         this.dichVu = dichVu;
     }
 
-    public double getPhiCatToc() {
+    public String getPhiCatToc() {
         return phiCatToc;
     }
 
-    public void setPhiCatToc(double phiCatToc) {
+    public void setPhiCatToc(String phiCatToc) {
         this.phiCatToc = phiCatToc;
     }
 
@@ -87,11 +93,11 @@ public class SalonNoti {
         this.thoiGianDuKienDichVu = thoiGianDuKienDichVu;
     }
 
-    public int getTrangThai() {
+    public String getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(int trangThai) {
+    public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
     }
 }

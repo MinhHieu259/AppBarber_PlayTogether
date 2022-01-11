@@ -5,12 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.appbarber.Class.Salon;
 import com.example.appbarber.Class.SalonNoti;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -67,7 +67,7 @@ public class SaLonNotiAdapter extends BaseAdapter {
         }
 
         SalonNoti salonNoti =listSalonNoti.get(i);
-        holder.imageViewHinh.setImageResource(salonNoti.getHinhAnh());
+        Picasso.get().load(Constaint.URL + "storage/salon/" + salonNoti.getHinhAnh()).into(holder.imageViewHinh);
         holder.textViewTenNhanVien.setText(salonNoti.getNhanVienCatToc());
         holder.textViewTenSalon.setText(salonNoti.getTenSalon());
         holder.textViewNgayDat.setText(salonNoti.getThoiGian());

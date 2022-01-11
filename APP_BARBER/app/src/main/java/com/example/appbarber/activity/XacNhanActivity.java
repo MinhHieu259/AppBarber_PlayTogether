@@ -1,6 +1,8 @@
 package com.example.appbarber.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,20 +13,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.appbarber.Class.NhanVienItemSpinner;
+import com.example.appbarber.Class.SalonNoti;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.example.appbarber.adapter.NhanVienSpinnerAdapter;
+import com.example.appbarber.fragment.SapToiFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class XacNhanActivity extends AppCompatActivity {
 private ArrayList nhanVienLists;
@@ -32,13 +39,23 @@ private NhanVienSpinnerAdapter nhanVienSpinnerAdapter;
 private Spinner spinnerNhanVien;
 private Button btn_xacnhandatlich;
 private int id_nhanvien = 0;
+private int id_dichvu = 0;
+private int id_salon = 0;
+private String thoiGian = "";
+private String ngayHen = "";
 private ProgressDialog dialog;
+private SharedPreferences userPref;
 TextView ngayDat;
 TextView gio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xac_nhan);
+        id_dichvu = getIntent().getIntExtra("id_dichvu",0);
+        id_salon = getIntent().getIntExtra("id_salon",0);
+        thoiGian = getIntent().getStringExtra("gio");
+        ngayHen = getIntent().getStringExtra("ngayDat");
+        userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         initNhanVienList();
         dialog = new ProgressDialog(this);
         dialog.setCancelable(false);
@@ -68,7 +85,61 @@ TextView gio;
         btn_xacnhandatlich.setOnClickListener(v->{
             dialog.setMessage("Đang xử lý");
             dialog.show();
+            StringRequest request = new StringRequest(Request.Method.POST, Constaint.DAT_LICH, response -> {
+                try {
+                    JSONObject object = new JSONObject(response);
+                    if (object.getBoolean("success")){
+                        JSONObject lichhenobject = object.getJSONObject("lichhen");
+                        JSONObject nhanvienobject = lichhenobject.getJSONObject("nhanvien");
+                        JSONObject userobject = lichhenobject.getJSONObject("user");
+                        JSONObject salonobject = lichhenobject.getJSONObject("salon");
 
+                        SalonNoti salonNoti = new SalonNoti();
+                        salonNoti.setId_lichhen(lichhenobject.getInt("id"));
+                        salonNoti.setTrangThai(lichhenobject.getString("status"));
+                        salonNoti.setThoiGian(lichhenobject.getString("ngayHen"));
+                        salonNoti.setHinhAnh(salonobject.getString("hinhAnh"));
+                        salonNoti.setNhanVienCatToc(nhanvienobject.getString("hoTen"));
+                        salonNoti.setTenSalon(salonobject.getString("tenSalon"));
+
+
+                        SapToiFragment.arraySalonNoti.add(0, salonNoti);
+//                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyItemInserted(0);
+//                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyDataSetChanged();
+                        // Toast.makeText(this, "Đăng thành thông", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                dialog.dismiss();
+            }, error -> {
+                error.printStackTrace();
+                dialog.dismiss();
+            }){
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    String token = userPref.getString("token", "");
+                    HashMap<String,String> map = new HashMap<>();
+                    map.put("Authorization", "Bearer "+token);
+                    return map;
+                }
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    HashMap<String,String> map = new HashMap<>();
+                    map.put("ngayHen", ngayHen);
+                    map.put("id_Dichvu", id_dichvu+"");
+                    map.put("id_Nhanvien", id_nhanvien+"");
+                    map.put("id_salon", id_salon+"");
+                    map.put("thoiGian", thoiGian);
+
+                    return map;
+                }
+            };
+            RequestQueue queue = Volley.newRequestQueue(this);
+            queue.add(request);
         });
     }
 

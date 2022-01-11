@@ -1,21 +1,34 @@
 package com.example.appbarber.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.appbarber.Class.SalonNoti;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.example.appbarber.adapter.SaLonNotiAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,9 +38,10 @@ import java.util.ArrayList;
 public class SapToiFragment extends Fragment {
 
 
-    ListView lvThongBaoSapToi;
-    ArrayList<SalonNoti> arraySalonNoti;
-    SaLonNotiAdapter solonNotiAdapter;
+    public static ListView lvThongBaoSapToi;
+    public static ArrayList<SalonNoti> arraySalonNoti;
+    private SaLonNotiAdapter solonNotiAdapter;
+    private SharedPreferences userPref;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,13 +97,46 @@ public class SapToiFragment extends Fragment {
 
     public void mapping(){
         arraySalonNoti = new ArrayList<>();
-        arraySalonNoti.add(new SalonNoti(R.drawable.image30shine,
-                "Play Together", "30Shine",
-                "6/11/2021", "02 Thanh Sơn, Thanh Bình, Hải Châu, Đà Năng",
-                "Cắt tóc 7 bước",
-                100000,
-                "30 phút",1
-        ));
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_LICHHEN_SAP_TOI, response -> {
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("lichhen"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject lichhenObject = array.getJSONObject(i);
+                        JSONObject salonObject = lichhenObject.getJSONObject("salon");
+                        JSONObject nhanvienObject = lichhenObject.getJSONObject("nhanvien");
+                        SalonNoti salon = new SalonNoti();
+                        salon.setId_lichhen(lichhenObject.getInt("id"));
+                        salon.setTrangThai(lichhenObject.getString("status"));
+                        salon.setThoiGian(lichhenObject.getString("ngayHen"));
+                        salon.setHinhAnh(salonObject.getString("hinhAnh"));
+                        salon.setNhanVienCatToc(nhanvienObject.getString("hoTen"));
+                        salon.setTenSalon(salonObject.getString("tenSalon"));
+                        arraySalonNoti.add(salon);
+
+                    }
+                    solonNotiAdapter = new SaLonNotiAdapter(getActivity(), R.layout.lichhensaptoi_view,arraySalonNoti);
+                    lvThongBaoSapToi.setAdapter(solonNotiAdapter);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String token = userPref.getString("token", "");
+                HashMap<String,String> map = new HashMap<>();
+                map.put("Authorization","Bearer "+token);
+                return map;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
 
 
     }
@@ -97,10 +144,10 @@ public class SapToiFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mapping();
+        userPref = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         lvThongBaoSapToi = view.findViewById(R.id.lvThongBaoSapToi);
-        solonNotiAdapter = new SaLonNotiAdapter(getActivity(), R.layout.lichhensaptoi_view,arraySalonNoti);
-        lvThongBaoSapToi.setAdapter(solonNotiAdapter);
+        mapping();
+
     }
 
 
