@@ -1,8 +1,10 @@
 package com.example.appbarber.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +30,9 @@ public class XacNhanActivity extends AppCompatActivity {
 private ArrayList nhanVienLists;
 private NhanVienSpinnerAdapter nhanVienSpinnerAdapter;
 private Spinner spinnerNhanVien;
+private Button btn_xacnhandatlich;
 private int id_nhanvien = 0;
+private ProgressDialog dialog;
 TextView ngayDat;
 TextView gio;
     @Override
@@ -36,7 +40,10 @@ TextView gio;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xac_nhan);
         initNhanVienList();
+        dialog = new ProgressDialog(this);
+        dialog.setCancelable(false);
         spinnerNhanVien = findViewById(R.id.spinnerNhanVien);
+        btn_xacnhandatlich = findViewById(R.id.btn_xacnhandatlich);
         nhanVienSpinnerAdapter = new NhanVienSpinnerAdapter(this, nhanVienLists);
         spinnerNhanVien.setAdapter(nhanVienSpinnerAdapter);
         ngayDat = findViewById(R.id.txtNgayDat);
@@ -57,12 +64,16 @@ TextView gio;
 
             }
         });
+
+        btn_xacnhandatlich.setOnClickListener(v->{
+            dialog.setMessage("Đang xử lý");
+            dialog.show();
+
+        });
     }
 
     private void initNhanVienList() {
         nhanVienLists = new ArrayList<>();
-//        nhanVienLists.add(new NhanVienItemSpinner("Nguyễn Minh Hiếu", "Thợ Cắt"));
-//        nhanVienLists.add(new NhanVienItemSpinner("Ngô Văn Thuần", "Thợ Cắt"));
         StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_NHANVIEN_BY_SALON+"/"+getIntent().getStringExtra("gio")+","+getIntent().getIntExtra("id_dichvu",0), response -> {
 
             try {

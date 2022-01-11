@@ -12,12 +12,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -32,8 +30,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DatLichActivity extends AppCompatActivity {
 private ArrayList<DichvuItemSpinner> dichvuLists;
@@ -100,6 +96,7 @@ private int id_salon = 0;
                 intent.putExtra("ngayDat", textViewHidden.getText());
                 intent.putExtra("dichvu", tenDV.getText());
                 intent.putExtra("id_dichvu", id_dichvu);
+                intent.putExtra("id_salon", id_salon);
                 startActivity(intent);
             }
         });
@@ -108,15 +105,10 @@ private int id_salon = 0;
 
     private void initListDvSpinner() {
         dichvuLists = new ArrayList<>();
-//        dichvuLists.add(new DichvuItemSpinner("Cắt tóc", 20, 50000));
-//        dichvuLists.add(new DichvuItemSpinner("Combo 10 bước", 45, 100000));
-//        dichvuLists.add(new DichvuItemSpinner("Combo 7 bước", 30, 80000));
-//        dichvuLists.add(new DichvuItemSpinner("Nhuộm tóc", 60, 200000));
         StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_DICHVU_BY_SALON+"/"+id_salon, response -> {
 
             try {
                 JSONObject object = new JSONObject(response);
-                Toast.makeText(DatLichActivity.this, object+"", Toast.LENGTH_SHORT).show();
                 if (object.getBoolean("success")){
                     JSONArray array = new JSONArray(object.getString("dichvu"));
                     for (int i = 0; i< array.length(); i++){
@@ -138,13 +130,7 @@ private int id_salon = 0;
         }, error -> {
             error.printStackTrace();
         }){
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                String token = userPref.getString("token", "");
-                HashMap<String,String> map = new HashMap<>();
-                map.put("Authorization", "Bearer "+token);
-                return map;
-            }
+
         };
 
         RequestQueue queue = Volley.newRequestQueue(this);

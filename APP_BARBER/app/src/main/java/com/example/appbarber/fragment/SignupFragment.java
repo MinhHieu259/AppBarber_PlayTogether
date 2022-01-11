@@ -118,6 +118,8 @@ private Context context;
                     editor.putString("name", user.getString("name"));
                     editor.putString("lastname", user.getString("lastname"));
                     editor.putString("photo", user.getString("photo"));
+                    editor.putString("phone", user.getString("phone"));
+                    editor.putString("address", user.getString("address"));
                     editor.putBoolean("isLoggedIn", true);
                     editor.apply();
                     // if Success
