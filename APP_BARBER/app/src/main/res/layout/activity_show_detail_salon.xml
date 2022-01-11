@@ -150,6 +150,7 @@
                 android:background="@drawable/bgr_button_datlich"
                 />
             <ImageButton
+                android:id="@+id/btn_yeuthich"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="1dp"

@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +28,7 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
 TextView nameSalon, diachi, name2, txtSoNam, txtSoCho, txtChuTiem, txtGioiThieu;
 RoundedImageView image;
 Button btnDatLich;
+private ImageButton btn_yeuthich;
 private int id_salon = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ private int id_salon = 0;
         txtSoNam = findViewById(R.id.txtSoNam);
         txtChuTiem = findViewById(R.id.txtTenChutiem);
         txtGioiThieu = findViewById(R.id.txtGioithieu);
+        btn_yeuthich = findViewById(R.id.btn_yeuthich);
         image = findViewById(R.id.image_detail_salon);
         btnDatLich = findViewById(R.id.btn_datlich);
         id_salon = getIntent().getIntExtra("salonId", 0);
@@ -58,28 +62,34 @@ private int id_salon = 0;
         StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_SALON_BY_ID+"/"+id_salon, res->{
 
             try {
-                JSONObject object = new JSONObject(res);
-                if (object.getBoolean("success")){
-                    JSONArray salonarray = new JSONArray(object.getString("salon"));
-                    JSONObject salonobject = salonarray.getJSONObject(0);
-                    String namesalon = salonobject.getString("tenSalon");
-                    String name2salon = salonobject.getString("tenSalon");
-                    String diaChi = salonobject.getString("diaChi");
-                    String soCho = salonobject.getString("soChoNgoi");
-                    String soNam = salonobject.getString("soNamThanhLap");
-                    String imageSalon = salonobject.getString("hinhAnh");
-                    String chuTiem = salonobject.getString("chuTiem");
-                    String gioiThieu = salonobject.getString("gioiThieu");
-                    nameSalon.setText(namesalon);
-                    name2.setText(name2salon);
-                    diachi.setText(diaChi);
-                    txtSoCho.setText(soCho);
-                    txtSoNam.setText(soNam);
-                    txtChuTiem.setText(chuTiem);
-                    txtGioiThieu.setText(gioiThieu);
-                    Picasso.get().load(Constaint.URL+"storage/salon/"+imageSalon).into(image);
 
-                }
+                JSONObject object = new JSONObject(res);
+                Toast.makeText(ShowDetailSalonActivity.this, object+"", Toast.LENGTH_SHORT).show();
+                if (object.getBoolean("success")) {
+                    JSONArray salonarray = new JSONArray(object.getString("salon"));
+
+                        JSONObject salonobject = salonarray.getJSONObject(0);
+                        String namesalon = salonobject.getString("tenSalon");
+                        String name2salon = salonobject.getString("tenSalon");
+                        String diaChi = salonobject.getString("diaChi");
+                        String soCho = salonobject.getString("soChoNgoi");
+                        String soNam = salonobject.getString("soNamThanhLap");
+                        String imageSalon = salonobject.getString("hinhAnh");
+                        String chuTiem = salonobject.getString("chuTiem");
+                        String gioiThieu = salonobject.getString("gioiThieu");
+                        Boolean selfLove = salonobject.getBoolean("selfLove");
+                        nameSalon.setText(namesalon);
+                        name2.setText(name2salon);
+                        diachi.setText(diaChi);
+                        txtSoCho.setText(soCho);
+                        txtSoNam.setText(soNam);
+                        txtChuTiem.setText(chuTiem);
+                        txtGioiThieu.setText(gioiThieu);
+                        Picasso.get().load(Constaint.URL + "storage/salon/" + imageSalon).into(image);
+                    btn_yeuthich.setImageResource(
+                            selfLove ? R.drawable.ic_baseline_favorite_red : R.drawable.ic_baseline_favorite_24
+                    );
+                    }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
