@@ -2,6 +2,7 @@ package com.example.appbarber.activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -106,8 +107,6 @@ TextView gio;
                         SapToiFragment.arraySalonNoti.add(0, salonNoti);
 //                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyItemInserted(0);
 //                        SapToiFragment.lvThongBaoSapToi.getAdapter().notifyDataSetChanged();
-                        // Toast.makeText(this, "Đăng thành thông", Toast.LENGTH_SHORT).show();
-                        finish();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -140,6 +139,9 @@ TextView gio;
             };
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(request);
+            Toast.makeText(this, "Đặt lịch thành thông", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(XacNhanActivity.this, DashboardActivity.class));
+
         });
     }
 

@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import com.example.appbarber.fragment.DaDuyetFragment;
 import com.example.appbarber.fragment.SapToiFragment;
 import com.example.appbarber.fragment.LichSuFragment;
 
@@ -20,7 +21,13 @@ public class LichSuFragmentAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position)
         {
+            case 0:
+                return new SapToiFragment();
+
             case 1:
+                return new DaDuyetFragment();
+
+            case 2:
                 return new LichSuFragment();
         }
 
@@ -29,6 +36,6 @@ public class LichSuFragmentAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

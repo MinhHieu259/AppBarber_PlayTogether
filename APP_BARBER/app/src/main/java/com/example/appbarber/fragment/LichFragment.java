@@ -74,7 +74,8 @@ public class LichFragment extends Fragment {
         adapter = new LichSuFragmentAdapter(fm, getLifecycle());
         pager2.setAdapter(adapter);
 
-        tabLayout.addTab(tabLayout.newTab().setText("Sắt tới"));
+        tabLayout.addTab(tabLayout.newTab().setText("Chưa xác nhận"));
+        tabLayout.addTab(tabLayout.newTab().setText("Đã xác nhận"));
         tabLayout.addTab(tabLayout.newTab().setText("Lịch sử"));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
