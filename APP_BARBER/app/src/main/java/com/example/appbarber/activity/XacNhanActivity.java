@@ -147,7 +147,7 @@ TextView gio;
 
     private void initNhanVienList() {
         nhanVienLists = new ArrayList<>();
-        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_NHANVIEN_BY_SALON+"/"+getIntent().getStringExtra("gio")+","+getIntent().getIntExtra("id_dichvu",0), response -> {
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_NHANVIEN_BY_SALON+"/"+getIntent().getStringExtra("gio")+","+id_salon+","+id_dichvu, response -> {
 
             try {
                 JSONObject object = new JSONObject(response);
