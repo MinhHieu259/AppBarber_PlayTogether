@@ -98,8 +98,7 @@ public class TaiKhoanFragment extends Fragment {
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), YeuThichActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getContext(), YeuThichActivity.class));
             }
         });
         tvUsername = view.findViewById(R.id.tvUserName);

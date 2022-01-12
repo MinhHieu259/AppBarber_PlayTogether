@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBarber">
         <activity
+            android:name=".activity.YeuThichActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.EditUserInfoActivity"
             android:exported="true" />
         <activity
@@ -27,7 +30,6 @@
         <activity
             android:name=".activity.OnBoardActivity"
             android:exported="true" />
-        <activity android:name=".activity.YeuThichActivity" />
         <activity
             android:name=".activity.XacNhanActivity"
             android:exported="true" />
