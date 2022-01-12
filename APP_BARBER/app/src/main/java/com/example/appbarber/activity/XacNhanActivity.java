@@ -140,7 +140,9 @@ TextView gio;
             RequestQueue queue = Volley.newRequestQueue(this);
             queue.add(request);
             Toast.makeText(this, "Đặt lịch thành thông", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(XacNhanActivity.this, DashboardActivity.class));
+            Intent intent = new Intent(XacNhanActivity.this, DashboardActivity.class);
+            startActivity(intent);
+
 
         });
     }
@@ -157,7 +159,7 @@ TextView gio;
                     for (int i = 0; i< array.length(); i++){
                         JSONObject nhanvienObject = array.getJSONObject(i);
                         NhanVienItemSpinner nhanVienItemSpinner = new NhanVienItemSpinner();
-                        nhanVienItemSpinner.setId_nhanvien(nhanvienObject.getInt("id"));
+                        nhanVienItemSpinner.setId_nhanvien(nhanvienObject.getInt("id_NhanVien"));
                         nhanVienItemSpinner.setTenNhanVien(nhanvienObject.getString("hoTen"));
                         nhanVienItemSpinner.setChucVu(nhanvienObject.getString("chucvu"));
                         nhanVienLists.add(nhanVienItemSpinner);

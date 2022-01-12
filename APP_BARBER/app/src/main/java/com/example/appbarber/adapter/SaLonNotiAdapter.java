@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.appbarber.Class.SalonNoti;
@@ -37,7 +38,8 @@ public class SaLonNotiAdapter extends BaseAdapter {
     }
     private class ViewHolder{
         CircleImageView imageViewHinh;
-        TextView textViewTenNhanVien,textViewTenSalon,textViewNgayDat;
+        TextView textViewTenNhanVien,textViewTenSalon,textViewNgayDat, textViewXacNhan;
+        LinearLayout lnlXacNhan;
     }
 
     @Override
@@ -61,6 +63,8 @@ public class SaLonNotiAdapter extends BaseAdapter {
             holder.textViewTenNhanVien = (TextView) view.findViewById(R.id.textViewTenNhanVien);
             holder.textViewTenSalon = (TextView) view.findViewById(R.id.textViewTenSalon);
             holder.textViewNgayDat = (TextView) view.findViewById(R.id.textViewNgayDat);
+            holder.textViewXacNhan = (TextView) view.findViewById(R.id.textViewXacNhan);
+            holder.lnlXacNhan = (LinearLayout) view.findViewById(R.id.lnlXacNhan);
             view.setTag(holder);
         } else {
             holder =(ViewHolder) view.getTag();
@@ -71,6 +75,9 @@ public class SaLonNotiAdapter extends BaseAdapter {
         holder.textViewTenNhanVien.setText(salonNoti.getNhanVienCatToc());
         holder.textViewTenSalon.setText(salonNoti.getTenSalon());
         holder.textViewNgayDat.setText(salonNoti.getThoiGian());
+        holder.textViewXacNhan.setText(salonNoti.getTrangThai());
+
+
         return view;
     }
 }

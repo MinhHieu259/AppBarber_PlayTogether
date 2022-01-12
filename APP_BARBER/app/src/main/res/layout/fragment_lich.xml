@@ -19,12 +19,13 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="17dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="21dp"
             android:text="Lịch cắt của bạn"
-            android:fontFamily="@font/roboto_medium"
-            android:textColor="#000"
+            android:fontFamily="@font/leckerlione_regular"
+            android:textColor="@color/blue_main"
             android:textSize="40sp" />
     </LinearLayout>
 
