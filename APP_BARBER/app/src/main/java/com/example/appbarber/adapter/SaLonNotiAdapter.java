@@ -1,16 +1,19 @@
 package com.example.appbarber.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.appbarber.Class.SalonNoti;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
+import com.example.appbarber.activity.ChiTietLichHenActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -40,6 +43,7 @@ public class SaLonNotiAdapter extends BaseAdapter {
         CircleImageView imageViewHinh;
         TextView textViewTenNhanVien,textViewTenSalon,textViewNgayDat, textViewXacNhan;
         LinearLayout lnlXacNhan;
+        RelativeLayout linearLayoutRoot;
     }
 
     @Override
@@ -65,6 +69,7 @@ public class SaLonNotiAdapter extends BaseAdapter {
             holder.textViewNgayDat = (TextView) view.findViewById(R.id.textViewNgayDat);
             holder.textViewXacNhan = (TextView) view.findViewById(R.id.textViewXacNhan);
             holder.lnlXacNhan = (LinearLayout) view.findViewById(R.id.lnlXacNhan);
+            holder.linearLayoutRoot = (RelativeLayout) view.findViewById(R.id.linearRootLichhen);
             view.setTag(holder);
         } else {
             holder =(ViewHolder) view.getTag();
@@ -76,6 +81,14 @@ public class SaLonNotiAdapter extends BaseAdapter {
         holder.textViewTenSalon.setText(salonNoti.getDiaChi());
         holder.textViewNgayDat.setText(salonNoti.getThoiGian());
         holder.textViewXacNhan.setText(salonNoti.getTrangThai());
+        holder.linearLayoutRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ChiTietLichHenActivity.class);
+                intent.putExtra("id_lichhen", salonNoti.getId_lichhen());
+                context.startActivity(intent);
+            }
+        });
 
         if (salonNoti.getTrangThai().equals("Chưa xác nhận")){
             holder.lnlXacNhan.setBackgroundResource(R.drawable.border_orange);

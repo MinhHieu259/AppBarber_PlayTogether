@@ -1,9 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.ChiTietLichHenActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageSalonlich"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/txtTenSalonLich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/imageSalonlich"
+            android:text="Tên salon"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearTrangThaiLich"
+            android:layout_width="102dp"
+            android:layout_height="38dp"
+            android:background="@drawable/border_orange"
+            android:layout_below="@+id/txtTenSalonLich"
+            android:layout_toRightOf="@+id/imageSalonlich"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/txtTrangthaiLich"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Đã xác nhận"
+                android:gravity="center"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thời gian"
+            android:textColor="#C2C2C2"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/txtNgayDatLich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="16-10-2021"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txtGioDatLich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15:00"
+            android:layout_marginLeft="10dp"
+            android:textColor="#C2C2C2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Địa chỉ"
+            android:textSize="15sp"
+            android:textColor="#C2C2C2"
+            android:layout_marginTop="50dp"/>
+        <TextView
+            android:id="@+id/txtDiachiLich"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="105 Trần Xuân Lê, Đà Nẵng"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phí cắt tóc"
+            android:layout_marginTop="50dp"
+            android:textColor="#C2C2C2"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtPhiCatLich"
+            android:text="100,000đ"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dịch vụ"
+            android:layout_marginTop="50dp"
+            android:textColor="#C2C2C2"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtDichVuLich"
+            android:text="Combo 7 bước"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/buttonLich"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Hủy lịch hẹn"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_bg"/>
+    </LinearLayout>
+
+</LinearLayout>
