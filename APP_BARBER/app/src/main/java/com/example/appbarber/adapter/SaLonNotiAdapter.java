@@ -72,11 +72,20 @@ public class SaLonNotiAdapter extends BaseAdapter {
 
         SalonNoti salonNoti =listSalonNoti.get(i);
         Picasso.get().load(Constaint.URL + "storage/salon/" + salonNoti.getHinhAnh()).into(holder.imageViewHinh);
-        holder.textViewTenNhanVien.setText(salonNoti.getNhanVienCatToc());
-        holder.textViewTenSalon.setText(salonNoti.getTenSalon());
+        holder.textViewTenNhanVien.setText(salonNoti.getTenSalon());
+        holder.textViewTenSalon.setText(salonNoti.getDiaChi());
         holder.textViewNgayDat.setText(salonNoti.getThoiGian());
         holder.textViewXacNhan.setText(salonNoti.getTrangThai());
 
+        if (salonNoti.getTrangThai().equals("Chưa xác nhận")){
+            holder.lnlXacNhan.setBackgroundResource(R.drawable.border_orange);
+        }
+        if (salonNoti.getTrangThai().equals("đã xác nhận")){
+            holder.lnlXacNhan.setBackgroundResource(R.drawable.border_green);
+        }
+        if (salonNoti.getTrangThai().equals("đã hoàn thành")){
+            holder.lnlXacNhan.setBackgroundResource(R.drawable.border_blue);
+        }
 
         return view;
     }

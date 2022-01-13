@@ -112,6 +112,7 @@ public class SapToiFragment extends Fragment {
                         salon.setTrangThai(lichhenObject.getString("status"));
                         salon.setThoiGian(lichhenObject.getString("ngayHen"));
                         salon.setHinhAnh(salonObject.getString("hinhAnh"));
+                        salon.setDiaChi(salonObject.getString("diaChi"));
                         salon.setNhanVienCatToc(nhanvienObject.getString("hoTen"));
                         salon.setTenSalon(salonObject.getString("tenSalon"));
                         arraySalonNoti.add(salon);

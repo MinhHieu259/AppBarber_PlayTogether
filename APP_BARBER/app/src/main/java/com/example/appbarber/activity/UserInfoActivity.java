@@ -131,9 +131,10 @@ public class UserInfoActivity extends AppCompatActivity {
             try {
                 JSONObject object = new JSONObject(response);
                 if (object.getBoolean("success")){
+                    JSONObject userObject = object.getJSONObject("user");
                     SharedPreferences.Editor editor = userPref.edit();
-                    editor.putString("name", object.getString("name"));
-                    editor.putString("lastname", object.getString("lastname"));
+                    editor.putString("name", userObject.getString("name"));
+                    editor.putString("lastname", userObject.getString("lastname"));
                     editor.putString("photo", object.getString("photo"));
                     editor.putString("phone", phone);
                     editor.putString("address", address);
