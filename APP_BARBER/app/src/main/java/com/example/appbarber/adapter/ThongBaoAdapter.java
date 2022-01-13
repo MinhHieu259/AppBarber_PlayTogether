@@ -7,13 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.appbarber.Class.SalonNoti;
 import com.example.appbarber.Class.ThongBao;
 import com.example.appbarber.R;
 
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ThongBaoAdapter extends BaseAdapter {
     private Context context;
@@ -44,7 +41,7 @@ public class ThongBaoAdapter extends BaseAdapter {
         return 0;
     }
     private class ViewHolder{
-        TextView textViewTenThongBao,textViewNoiDungThongBao,textViewNgayNhanThongBao,textViewGio;
+        TextView textViewTenThongBao,textViewNoiDungThongBao,textViewNgayNhanThongBao;
     }
 
     @Override
@@ -57,7 +54,7 @@ public class ThongBaoAdapter extends BaseAdapter {
             holder.textViewTenThongBao = (TextView) view.findViewById(R.id.textViewTenThongBao);
             holder.textViewNoiDungThongBao = (TextView) view.findViewById(R.id.textViewNoiDungThongBao);
             holder.textViewNgayNhanThongBao = (TextView) view.findViewById(R.id.textViewNgayNhanThongBao);
-            holder.textViewGio = (TextView) view.findViewById(R.id.textViewGio);
+
             view.setTag(holder);
         } else {
             holder =(ViewHolder) view.getTag();
@@ -67,7 +64,6 @@ public class ThongBaoAdapter extends BaseAdapter {
         holder.textViewTenThongBao.setText(thongBao.getTenThongBao());
         holder.textViewNoiDungThongBao.setText(thongBao.getNoiDung());
         holder.textViewNgayNhanThongBao.setText(thongBao.getNgayThongBao());
-        holder.textViewGio.setText(thongBao.getGioThongBao());
         return view;
     }
 }

@@ -11,7 +11,8 @@
         android:id="@+id/lnlthongbao"
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:background="@drawable/line_buttom">
+        android:background="@drawable/line_buttom"
+        >
 
         <TextView
             android:id="@+id/textViewMenuThongBao"

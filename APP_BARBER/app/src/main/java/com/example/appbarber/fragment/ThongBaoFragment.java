@@ -1,5 +1,7 @@
 package com.example.appbarber.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +10,23 @@ import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.appbarber.Class.ThongBao;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.example.appbarber.adapter.ThongBaoAdapter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +38,7 @@ public class ThongBaoFragment extends Fragment {
     private  ArrayList<ThongBao> thongBaoArray;
     private ThongBaoAdapter thongBaoAdapter;
     private View view;
+    private SharedPreferences userPref;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -69,31 +84,53 @@ public class ThongBaoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_thong_bao, container, false);
+        userPref = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         mapping();
-        thongBaoAdapter = new ThongBaoAdapter(getContext(), R.layout.thongbao_view, thongBaoArray);
-        lvThongBao.setAdapter(thongBaoAdapter);
+//        thongBaoAdapter = new ThongBaoAdapter(getContext(), R.layout.thongbao_view, thongBaoArray);
+//        lvThongBao.setAdapter(thongBaoAdapter);
         return view;
     }
     public void mapping(){
         lvThongBao = (ListView) view.findViewById(R.id.lvThongBao);
         thongBaoArray = new ArrayList<>();
-        ThongBao thongBao = new ThongBao();
-        thongBao.setTenThongBao("Đặt lịch thành công");
-        thongBao.setNoiDung("Lịch cắt ngày 30/10/2021 đặt thành công tại 30 Shine");
-        thongBao.setNgayThongBao("29/10/2021");
-        thongBao.setGioThongBao("14:31:23");
-        ThongBao thongBao2 = new ThongBao();
-        thongBao2.setTenThongBao("Hủy lịch thành công");
-        thongBao2.setNoiDung("Hủy lịch cắt ngày 30/10/2021  thành công");
-        thongBao2.setNgayThongBao("29/10/2021");
-        thongBao2.setGioThongBao("14:31:23");
-        ThongBao thongBao3 = new ThongBao();
-        thongBao3.setTenThongBao("Mời bạn đánh giá dịch vụ");
-        thongBao3.setNoiDung("Tiệm cắt tóc 30shine");
-        thongBao3.setNgayThongBao("29/10/2021");
-        thongBao3.setGioThongBao("14:31:23");
-        thongBaoArray.add(thongBao);
-        thongBaoArray.add(thongBao2);
-        thongBaoArray.add(thongBao3);
+
+
+        StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_THONGBAO, response -> {
+
+            try {
+                JSONObject object = new JSONObject(response);
+                if (object.getBoolean("success")){
+                    JSONArray array = new JSONArray(object.getString("thongBao"));
+                    for (int i = 0; i< array.length(); i++){
+                        JSONObject thongBaoObject = array.getJSONObject(i);
+                        ThongBao thongBao = new ThongBao();
+                        thongBao.setId_salon(thongBaoObject.getInt("salon_id"));
+                        thongBao.setTenThongBao(thongBaoObject.getString("noiDung"));
+                        thongBao.setNoiDung(thongBaoObject.getString("chiTietNoiDung"));
+                        thongBao.setNgayThongBao(thongBaoObject.getString("created_at"));
+                        thongBaoArray.add(thongBao);
+
+                    }
+                    thongBaoAdapter = new ThongBaoAdapter(getActivity(), R.layout.thongbao_view,thongBaoArray);
+                    lvThongBao.setAdapter(thongBaoAdapter);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }, error -> {
+            error.printStackTrace();
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                String token = userPref.getString("token", "");
+                HashMap<String,String> map = new HashMap<>();
+                map.put("Authorization","Bearer "+token);
+                return map;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(request);
+
     }
 }
