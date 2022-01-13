@@ -20,4 +20,5 @@ public class Constaint {
     public static final String GET_LICHHEN_SAP_TOI= HOME+"/getLichHenSapToi";
     public static final String GET_LICHHEN_DA_DUYET= HOME+"/getLichDaDuyet";
     public static final String GET_LICHHEN_DA_DAT= HOME+"/getLichDaDat";
+    public static final String GET_LIST_YEUTHICH= HOME+"/getListYeuThich";
 }

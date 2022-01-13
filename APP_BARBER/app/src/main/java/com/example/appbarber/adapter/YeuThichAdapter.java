@@ -1,17 +1,23 @@
 package com.example.appbarber.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbarber.Class.YeuThich;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
+import com.example.appbarber.activity.ShowDetailSalonActivity;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -35,10 +41,17 @@ public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.MyView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.txtTenSalon.setText(yeuThichList.get(position).getTenSalon());
-        holder.imageYeuThich.setImageResource(yeuThichList.get(position).getImageSalon());
-
+        Picasso.get().load(Constaint.URL + "storage/salon/" + yeuThichList.get(position).getImageSalon()).into(holder.imageYeuThich);
+        holder.layoutYeuThich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailSalonActivity.class);
+                intent.putExtra("salonId", yeuThichList.get(position).getId_salon());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,10 +62,12 @@ public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.MyView
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageYeuThich;
         TextView txtTenSalon;
+        LinearLayout layoutYeuThich;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageYeuThich = (ImageView) itemView.findViewById(R.id.imageSalonYeuThich);
             txtTenSalon = (TextView) itemView.findViewById(R.id.tenSalonYeuThich);
+            layoutYeuThich = (LinearLayout) itemView.findViewById(R.id.linearYeuThich);
         }
     }
 }

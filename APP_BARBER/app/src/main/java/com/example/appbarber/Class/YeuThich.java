@@ -4,10 +4,13 @@ public class YeuThich {
     private int id_yeuthich;
     private int id_salon;
     private String tenSalon;
-    private int imageSalon;
+    private String imageSalon;
 
-    public YeuThich(String tenSalon, int imageSalon) {
-        this.tenSalon = tenSalon;
+    public String getImageSalon() {
+        return imageSalon;
+    }
+
+    public void setImageSalon(String imageSalon) {
         this.imageSalon = imageSalon;
     }
 
@@ -35,11 +38,5 @@ public class YeuThich {
         this.tenSalon = tenSalon;
     }
 
-    public int getImageSalon() {
-        return imageSalon;
-    }
 
-    public void setImageSalon(int imageSalon) {
-        this.imageSalon = imageSalon;
-    }
 }
