@@ -1,7 +1,7 @@
 package com.example.appbarber.Class;
 
 public class SalonNoti {
-    private int id_lichhen;
+    private int id_lichhen, id_salon;
     private String hinhAnh;
     private String nhanVienCatToc;
     private String tenSalon;
@@ -12,6 +12,14 @@ public class SalonNoti {
     private String thoiGianDuKienDichVu;
     private String chuTiem;
     private String trangThai;
+
+    public int getId_salon() {
+        return id_salon;
+    }
+
+    public void setId_salon(int id_salon) {
+        this.id_salon = id_salon;
+    }
 
     public String getChuTiem() {
         return chuTiem;

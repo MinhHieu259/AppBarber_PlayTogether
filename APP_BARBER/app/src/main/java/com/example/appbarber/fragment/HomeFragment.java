@@ -209,7 +209,7 @@ public class HomeFragment extends Fragment {
                         salon.setName(salonObject.getString("tenSalon"));
                         salon.setAddress(salonObject.getString("diaChi"));
                         salon.setImage(salonObject.getString("hinhAnh"));
-                        salon.setRating(salonObject.getInt("danhGia"));
+                        salon.setRating(salonObject.getInt("rating"));
                         salons.add(salon);
 
                     }

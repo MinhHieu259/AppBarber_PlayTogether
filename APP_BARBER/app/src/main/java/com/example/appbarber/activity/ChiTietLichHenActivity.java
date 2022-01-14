@@ -1,14 +1,18 @@
 package com.example.appbarber.activity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChiTietLichHenActivity extends AppCompatActivity {
     private SharedPreferences userPref;
-    private int id_lichhen = 0;
+    private int id_lichhen = 0, id_salon =0;
     private CircleImageView imageSalon;
     private TextView tenSalon, trangThai, ngayDat, gio, diaChi, phiCat, dichVu;
     private Button btn_Lich;
@@ -44,6 +48,7 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chi_tiet_lich_hen);
         userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         id_lichhen = getIntent().getIntExtra("id_lichhen", 0);
+        id_salon = getIntent().getIntExtra("id_salon", 0);
         imageSalon = findViewById(R.id.imageSalonlich);
         tenSalon = findViewById(R.id.txtTenSalonLich);
         trangThai = findViewById(R.id.txtTrangthaiLich);
@@ -111,6 +116,72 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
                     if (lichhenobject.getString("status").equals("đã hoàn thành")){
                         linearTrangThaiLich.setBackgroundResource(R.drawable.border_blue);
                         btn_Lich.setText("Đánh giá dịch vụ");
+
+                        btn_Lich.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Dialog dialog = new Dialog(ChiTietLichHenActivity.this);
+                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(
+                                        Color.TRANSPARENT
+                                ));
+
+                                dialog.setContentView(R.layout.dialog_rating);
+                                dialog.show();
+
+                                RatingBar ratingBar = dialog.findViewById(R.id.rating_bar);
+                                TextView txtRating = dialog.findViewById(R.id.txtRating);
+                                Button btn_Submit_sao = dialog.findViewById(R.id.btn_SubmitSao);
+
+                                ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+                                    @Override
+                                    public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                                        txtRating.setText(String.format("(%s)", v));
+
+                                    }
+                                });
+
+                                btn_Submit_sao.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        String sRating = String.valueOf(ratingBar.getRating());
+                                        StringRequest request = new StringRequest(Request.Method.POST, Constaint.DANH_GIA, response -> {
+                                            try {
+                                                JSONObject object = new JSONObject(response);
+                                                if (object.getBoolean("success")){
+                                                   startActivity(new Intent(ChiTietLichHenActivity.this, DashboardActivity.class));
+
+                                                }
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }, error -> {
+                                            error.printStackTrace();
+
+                                        }){
+                                            @Override
+                                            public Map<String, String> getHeaders() throws AuthFailureError {
+                                                String token = userPref.getString("token", "");
+                                                HashMap<String,String> map = new HashMap<>();
+                                                map.put("Authorization","Bearer "+token);
+                                                return map;
+                                            }
+
+                                            @Override
+                                            protected Map<String, String> getParams() throws AuthFailureError {
+                                                HashMap<String,String> map = new HashMap<>();
+                                                map.put("id_salon", id_salon+"");
+                                                map.put("soSao", sRating);
+
+                                                return map;
+                                            }
+                                        };
+                                        RequestQueue queue = Volley.newRequestQueue(ChiTietLichHenActivity.this);
+                                        queue.add(request);
+                                    }
+                                });
+                            }
+                        });
                     }
 
 

@@ -86,6 +86,7 @@ public class SaLonNotiAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChiTietLichHenActivity.class);
                 intent.putExtra("id_lichhen", salonNoti.getId_lichhen());
+                intent.putExtra("id_salon", salonNoti.getId_salon());
                 context.startActivity(intent);
             }
         });

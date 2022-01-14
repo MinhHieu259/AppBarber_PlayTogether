@@ -114,6 +114,7 @@ private int id_salon = 0;
                     for (int i = 0; i< array.length(); i++){
                         JSONObject dichvuObject = array.getJSONObject(i);
                         DichvuItemSpinner dichvuItemSpinner = new DichvuItemSpinner();
+                        dichvuItemSpinner.setHinhAnh(dichvuObject.getString("hinhanh"));
                         dichvuItemSpinner.setId_dichvu(dichvuObject.getInt("id"));
                         dichvuItemSpinner.setTenDichvu(dichvuObject.getString("tenDichvu"));
                         dichvuItemSpinner.setThoigian(dichvuObject.getInt("thoiGian"));

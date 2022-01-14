@@ -11,10 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.appbarber.Class.DichvuItemSpinner;
+import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DichvuSpinnerAdapter extends ArrayAdapter<DichvuItemSpinner> {
     public DichvuSpinnerAdapter(Context context, ArrayList<DichvuItemSpinner> dichvulist) {
@@ -40,6 +44,7 @@ public class DichvuSpinnerAdapter extends ArrayAdapter<DichvuItemSpinner> {
         TextView tenDV = convertView.findViewById(R.id.tendv);
         TextView thoiGian = convertView.findViewById(R.id.thoigian);
         TextView gia = convertView.findViewById(R.id.giaDV);
+        CircleImageView imageView = convertView.findViewById(R.id.imageDichvusp);
         DichvuItemSpinner currentItem = getItem(position);
         DecimalFormat formatter = new DecimalFormat("#,###,###");
         if (currentItem != null){
@@ -47,6 +52,7 @@ public class DichvuSpinnerAdapter extends ArrayAdapter<DichvuItemSpinner> {
             tenDV.setText(currentItem.getTenDichvu());
             thoiGian.setText(String.valueOf(currentItem.getThoigian()+ " phút"));
             gia.setText(String.valueOf(giafm+ " VNĐ"));
+            Picasso.get().load(Constaint.URL + "storage/dichvu/" + currentItem.getHinhAnh()).into(imageView);
 
         }
         return convertView;

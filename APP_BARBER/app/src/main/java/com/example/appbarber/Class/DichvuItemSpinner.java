@@ -5,8 +5,16 @@ public class DichvuItemSpinner {
     private String tenDichvu;
     private int thoigian;
     private int gia;
+    private String hinhAnh;
 
 
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
+    }
 
     public int getId_dichvu() {
         return id_dichvu;

@@ -108,6 +108,7 @@ public class SapToiFragment extends Fragment {
                         JSONObject salonObject = lichhenObject.getJSONObject("salon");
                         JSONObject nhanvienObject = lichhenObject.getJSONObject("nhanvien");
                         SalonNoti salon = new SalonNoti();
+                        salon.setId_salon(salonObject.getInt("id"));
                         salon.setId_lichhen(lichhenObject.getInt("id"));
                         salon.setTrangThai(lichhenObject.getString("status"));
                         salon.setThoiGian(lichhenObject.getString("ngayHen"));
