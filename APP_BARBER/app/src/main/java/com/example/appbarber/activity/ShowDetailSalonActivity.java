@@ -33,7 +33,7 @@ public class ShowDetailSalonActivity extends AppCompatActivity {
 TextView nameSalon, diachi, name2, txtSoNam, txtSoCho, txtChuTiem, txtGioiThieu;
 RoundedImageView image;
 Button btnDatLich;
-private ImageButton btn_yeuthich;
+private ImageButton btn_yeuthich, btn_home;
 private SharedPreferences userPref;
 private int id_salon = 0;
     @Override
@@ -53,7 +53,13 @@ private int id_salon = 0;
         image = findViewById(R.id.image_detail_salon);
         btnDatLich = findViewById(R.id.btn_datlich);
         id_salon = getIntent().getIntExtra("salonId", 0);
-
+        btn_home = findViewById(R.id.btn_home);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ShowDetailSalonActivity.this, DashboardActivity.class));
+            }
+        });
         getInFoSalon();
 
         btnDatLich.setOnClickListener(new View.OnClickListener() {

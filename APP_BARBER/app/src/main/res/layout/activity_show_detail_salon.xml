@@ -12,6 +12,14 @@
         android:layout_height="290dp"
         android:scaleType="centerCrop"
         android:src="@drawable/background_login" />
+
+    <ImageButton
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_home"
+        android:layout_width="wrap_content"
+        android:background="@color/blue_main"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
     <RelativeLayout
         android:id="@+id/relative_chitietSalon"
         android:layout_width="match_parent"

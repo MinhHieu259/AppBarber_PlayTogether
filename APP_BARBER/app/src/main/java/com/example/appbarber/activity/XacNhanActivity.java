@@ -141,6 +141,7 @@ TextView gio;
             queue.add(request);
             Toast.makeText(this, "Đặt lịch thành thông", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(XacNhanActivity.this, DashboardActivity.class);
+            intent.putExtra("message", 2);
             startActivity(intent);
 
 

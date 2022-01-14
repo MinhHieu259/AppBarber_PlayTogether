@@ -1,8 +1,11 @@
 package com.example.appbarber.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -30,12 +33,22 @@ import java.util.Map;
 public class YeuThichActivity extends AppCompatActivity {
 private RecyclerView yeuThichRecycler;
 private List<YeuThich> yeuThichList;
+private ImageButton btn_home;
     private SharedPreferences userPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_yeu_thich);
+        btn_home = findViewById(R.id.btn_home_yt);
+        btn_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(YeuThichActivity.this, DashboardActivity.class);
+                intent.putExtra("message", 3);
+                startActivity(intent);
+            }
+        });
         userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         yeuThichRecycler = findViewById(R.id.recyclerYeuThich);
 

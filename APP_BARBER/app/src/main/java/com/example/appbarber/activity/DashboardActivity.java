@@ -17,16 +17,27 @@ import com.example.appbarber.fragment.ThongBaoFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashboardActivity extends AppCompatActivity {
-    FragmentManager fragmentManager;
+    public static FragmentManager fragmentManager;
     BottomNavigationView navigationView;
+    private int message = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_dashboard);
+        message = getIntent().getIntExtra("message",0);
         navigationView = findViewById(R.id.bottom_nav);
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frameHomeContainer, new HomeFragment(),HomeFragment.class.getSimpleName()).commit();
+        if (message == 1){
+            fragmentManager.beginTransaction().replace(R.id.frameHomeContainer, new LichFragment(),LichFragment.class.getSimpleName()).commit();
+        }
+        if (message == 2){
+            fragmentManager.beginTransaction().replace(R.id.frameHomeContainer, new LichFragment(),LichFragment.class.getSimpleName()).commit();
+        }
+        if (message == 3){
+            fragmentManager.beginTransaction().replace(R.id.frameHomeContainer, new TaiKhoanFragment(),TaiKhoanFragment.class.getSimpleName()).commit();
+        }
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
