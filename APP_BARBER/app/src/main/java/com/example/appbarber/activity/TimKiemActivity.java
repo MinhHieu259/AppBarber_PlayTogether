@@ -2,8 +2,11 @@ package com.example.appbarber.activity;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -11,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,7 +38,8 @@ public class TimKiemActivity extends AppCompatActivity {
     private ArrayList<Salon> salons;
     private Toolbar toolBar;
     private SearchView searchView;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private ImageButton btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +48,20 @@ public class TimKiemActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerViewTK.setLayoutManager(linearLayoutManager);
         toolBar = findViewById(R.id.toolbarTK);
+        swipeRefreshLayout = findViewById(R.id.refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getListSalon();
+            }
+        });
+        btn_back = findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(TimKiemActivity.this, DashboardActivity.class));
+            }
+        });
         this.setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getListSalon();
@@ -53,6 +72,7 @@ public class TimKiemActivity extends AppCompatActivity {
 
     private void  getListSalon() {
          salons = new ArrayList<>();
+        swipeRefreshLayout.setRefreshing(true);
         StringRequest request = new StringRequest(Request.Method.POST, Constaint.GET_SALON, response -> {
 
             try {
@@ -70,13 +90,16 @@ public class TimKiemActivity extends AppCompatActivity {
                         salons.add(salon);
 
                     }
-                    recyclerViewTK.setAdapter(new TimKiemAdapter(salons));
+                    timKiemAdapter = new TimKiemAdapter(salons);
+                    recyclerViewTK.setAdapter(timKiemAdapter);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            swipeRefreshLayout.setRefreshing(false);
         }, error -> {
             error.printStackTrace();
+            swipeRefreshLayout.setRefreshing(false);
         }){
 
         };

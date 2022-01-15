@@ -1,5 +1,6 @@
 package com.example.appbarber.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appbarber.Class.Salon;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
+import com.example.appbarber.activity.ShowDetailSalonActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
@@ -33,7 +35,7 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimKiemV
     @NonNull
     @Override
     public TimKiemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slider_home, parent, false);
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_timkiem, parent, false);
 
         return new TimKiemViewHolder(view);
     }
@@ -48,6 +50,14 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimKiemV
         holder.txtAddress.setText(salon.getAddress());
         holder.txtName.setText(salon.getName());
         holder.ratingBar.setRating(salon.getRating());
+        holder.imagePoster.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), ShowDetailSalonActivity.class);
+                intent.putExtra("salonId", salon.getId());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -99,6 +109,7 @@ public class TimKiemAdapter extends RecyclerView.Adapter<TimKiemAdapter.TimKiemV
             txtAddress = itemView.findViewById(R.id.textaddress);
             txtName = itemView.findViewById(R.id.textname);
             ratingBar = itemView.findViewById(R.id.ratingBar);
+
         }
     }
 }
