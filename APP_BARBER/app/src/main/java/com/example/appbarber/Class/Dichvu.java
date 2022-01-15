@@ -1,12 +1,18 @@
 package com.example.appbarber.Class;
 
 public class Dichvu {
+    int id_dichvu;
     String image;
     String tendv, gia, tensalon;
 
 
+    public int getId_dichvu() {
+        return id_dichvu;
+    }
 
-
+    public void setId_dichvu(int id_dichvu) {
+        this.id_dichvu = id_dichvu;
+    }
 
     public void setTendv(String tendv) {
         this.tendv = tendv;

@@ -1,9 +1,17 @@
 package com.example.appbarber.Class;
 
 public class SalonhelperFeature {
+    int id_salon;
     String  image;
     String title, address;
 
+    public int getId_salon() {
+        return id_salon;
+    }
+
+    public void setId_salon(int id_salon) {
+        this.id_salon = id_salon;
+    }
 
     public String getImage() {
         return image;

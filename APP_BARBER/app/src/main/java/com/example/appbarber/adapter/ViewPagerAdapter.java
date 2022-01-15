@@ -22,9 +22,9 @@ public class ViewPagerAdapter extends PagerAdapter {
         this.context = context;
     }
     private int images[] = {
-            R.drawable.onboard1,
-            R.drawable.onboard1,
-            R.drawable.onboard1
+            R.drawable.start1,
+            R.drawable.start2,
+            R.drawable.start3
     };
     private String titles[] = {
             "Nhiều Salon nổi tiếng",

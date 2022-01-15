@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -47,6 +48,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<Salon> salons;
     ArrayList<Dichvu> dichvus;
     ArrayList<SalonhelperFeature> noibatSalons;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private View view;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,6 +98,15 @@ public class HomeFragment extends Fragment {
         lngantoi = (LinearLayout) view.findViewById(R.id.lngantoi);
         lntimkiem = (LinearLayout) view.findViewById(R.id.lnloc);
         lnbando = (LinearLayout) view.findViewById(R.id.lnbando);
+        swipeRefreshLayout = view.findViewById(R.id.refeshHome);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                setupSalonsViewPager();
+                noibatRecycler();
+                dvNoibatRecycler();
+            }
+        });
         lnbando.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -122,6 +133,7 @@ public class HomeFragment extends Fragment {
         noibatRecycler.setHasFixedSize(true);
         noibatRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         noibatSalons = new ArrayList<>();
+        swipeRefreshLayout.setRefreshing(true);
         StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_SALON_FEATURE, response -> {
 
             try {
@@ -131,6 +143,7 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i< array.length(); i++){
                         JSONObject salonObject = array.getJSONObject(i);
                         SalonhelperFeature salon = new SalonhelperFeature();
+                        salon.setId_salon(salonObject.getInt("id"));
                         salon.setTitle(salonObject.getString("tenSalon"));
                         salon.setAddress(salonObject.getString("diaChi"));
                         salon.setImage(salonObject.getString("hinhAnh"));
@@ -143,8 +156,10 @@ public class HomeFragment extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            swipeRefreshLayout.setRefreshing(false);
         }, error -> {
             error.printStackTrace();
+            swipeRefreshLayout.setRefreshing(false);
         }){
 
         };
@@ -158,6 +173,7 @@ public class HomeFragment extends Fragment {
         dvnoibatRecycler.setHasFixedSize(true);
         dvnoibatRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         dichvus = new ArrayList<>();
+        swipeRefreshLayout.setRefreshing(true);
         StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_DICHVU, response -> {
 
             try {
@@ -167,6 +183,7 @@ public class HomeFragment extends Fragment {
                     for (int i = 0; i< array.length(); i++){
                         JSONObject dichvuObject = array.getJSONObject(i);
                         Dichvu dichvu = new Dichvu();
+                        dichvu.setId_dichvu(dichvuObject.getInt("id"));
                         dichvu.setTendv(dichvuObject.getString("tenDichvu"));
                         dichvu.setGia(dichvuObject.getString("giaTien"));
                         dichvu.setImage(dichvuObject.getString("hinhanh"));
@@ -179,8 +196,10 @@ public class HomeFragment extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            swipeRefreshLayout.setRefreshing(false);
         }, error -> {
             error.printStackTrace();
+            swipeRefreshLayout.setRefreshing(false);
         }){
 
         };
@@ -205,6 +224,7 @@ public class HomeFragment extends Fragment {
         });
         salonViewPager.setPageTransformer(compositePageTransformer);
         salons = new ArrayList<>();
+        swipeRefreshLayout.setRefreshing(true);
         StringRequest request = new StringRequest(Request.Method.POST, Constaint.GET_SALON, response -> {
 
             try {
@@ -227,8 +247,10 @@ public class HomeFragment extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            swipeRefreshLayout.setRefreshing(false);
         }, error -> {
             error.printStackTrace();
+            swipeRefreshLayout.setRefreshing(false);
         }){
 
         };

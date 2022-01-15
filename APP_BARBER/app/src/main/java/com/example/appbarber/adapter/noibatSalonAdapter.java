@@ -1,9 +1,11 @@
 package com.example.appbarber.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appbarber.Class.SalonhelperFeature;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
+import com.example.appbarber.activity.ShowDetailSalonActivity;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
@@ -39,6 +42,14 @@ public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.
      Picasso.get().load(Constaint.URL+"storage/salon/"+salonhelperClasss.getImage()).into(holder.image);
      holder.title.setText(salonhelperClasss.getTitle());
      holder.address.setText(salonhelperClasss.getAddress());
+     holder.noibatrelative.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             Intent intent = new Intent(holder.itemView.getContext(), ShowDetailSalonActivity.class);
+             intent.putExtra("salonId", salonhelperClasss.getId_salon());
+             holder.itemView.getContext().startActivity(intent);
+         }
+     });
     }
 
     @Override
@@ -50,13 +61,14 @@ public class noibatSalonAdapter extends RecyclerView.Adapter<noibatSalonAdapter.
 
         RoundedImageView image;
         TextView title, address;
+        RelativeLayout noibatrelative;
 
         public noibatViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.noibatimage);
             title = itemView.findViewById(R.id.namesalon);
             address = itemView.findViewById(R.id.diachisalon);
-
+            noibatrelative = itemView.findViewById(R.id.noibatrelative);
         }
     }
 }
