@@ -3,9 +3,9 @@
     <style name="Theme.AppBarber" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
+
 
         <!-- Status bar color. -->
 

@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBarber">
         <activity
+            android:name=".activity.TimKiemActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ChiTietLichHenActivity"
             android:exported="true" />
         <activity

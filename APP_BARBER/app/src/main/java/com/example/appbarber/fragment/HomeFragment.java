@@ -24,6 +24,7 @@ import com.example.appbarber.Class.SalonhelperFeature;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
 import com.example.appbarber.activity.MapsActivity;
+import com.example.appbarber.activity.TimKiemActivity;
 import com.example.appbarber.adapter.SalonAdapter;
 import com.example.appbarber.adapter.noibatDichvuAdapter;
 import com.example.appbarber.adapter.noibatSalonAdapter;
@@ -40,7 +41,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    private LinearLayout lngantoi, lnbando;
+    private LinearLayout lngantoi, lnbando, lntimkiem;
     private  RecyclerView noibatRecycler, dvnoibatRecycler;
     private  RecyclerView.Adapter adapter;
     private ArrayList<Salon> salons;
@@ -93,12 +94,20 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         lngantoi = (LinearLayout) view.findViewById(R.id.lngantoi);
+        lntimkiem = (LinearLayout) view.findViewById(R.id.lnloc);
         lnbando = (LinearLayout) view.findViewById(R.id.lnbando);
         lnbando.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+        lntimkiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), TimKiemActivity.class);
                 startActivity(intent);
             }
         });

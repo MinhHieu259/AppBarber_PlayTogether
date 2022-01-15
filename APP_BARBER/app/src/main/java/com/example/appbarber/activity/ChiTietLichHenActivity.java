@@ -113,7 +113,7 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
                         btn_Lich.setBackgroundResource(R.drawable.border_gray);
                     }
 
-                    if (lichhenobject.getString("status").equals("đã hoàn thành")){
+                    if (lichhenobject.getString("status").equals("đã hoàn thành") && lichhenobject.getBoolean("daDanhGia")==false){
                         linearTrangThaiLich.setBackgroundResource(R.drawable.border_blue);
                         btn_Lich.setText("Đánh giá dịch vụ");
 
@@ -172,6 +172,7 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
                                                 HashMap<String,String> map = new HashMap<>();
                                                 map.put("id_salon", id_salon+"");
                                                 map.put("soSao", sRating);
+                                                map.put("id_lichhen", id_lichhen+"");
 
                                                 return map;
                                             }
@@ -184,6 +185,11 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
                         });
                     }
 
+                    if (lichhenobject.getString("status").equals("đã hoàn thành") && lichhenobject.getBoolean("daDanhGia")==true){
+                        btn_Lich.setText("Đánh giá dịch vụ");
+                        btn_Lich.setEnabled(false);
+                        btn_Lich.setBackgroundResource(R.drawable.border_gray);
+                    }
 
 
                 }
