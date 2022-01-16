@@ -40,7 +40,7 @@ public class OnBoardActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         buttonRight.setOnClickListener(v->{
-            if(buttonRight.getText().equals("Next")){
+            if(buttonRight.getText().equals("Tiếp")){
                 viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
             }else {
                 startActivity(new Intent(OnBoardActivity.this, LoginActivity.class));
@@ -81,15 +81,15 @@ public class OnBoardActivity extends AppCompatActivity {
             if (position==0){
                 buttonLeft.setVisibility(View.VISIBLE);
                 buttonLeft.setEnabled(true);
-                buttonRight.setText("Next");
+                buttonRight.setText("Tiếp");
             }else if (position==1){
                 buttonLeft.setVisibility(View.GONE);
                 buttonLeft.setEnabled(false);
-                buttonRight.setText("Next");
+                buttonRight.setText("Tiếp");
             }else {
                 buttonLeft.setVisibility(View.GONE);
                 buttonLeft.setEnabled(true);
-                buttonRight.setText("Finish");
+                buttonRight.setText("Vào app");
             }
         }
 

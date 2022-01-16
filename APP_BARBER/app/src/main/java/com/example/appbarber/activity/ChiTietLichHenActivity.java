@@ -12,6 +12,7 @@ import android.icu.text.DecimalFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -49,6 +50,7 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_chi_tiet_lich_hen);
         userPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         id_lichhen = getIntent().getIntExtra("id_lichhen", 0);
