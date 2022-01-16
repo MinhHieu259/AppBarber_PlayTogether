@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.icu.text.DecimalFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -42,6 +45,7 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
     private TextView tenSalon, trangThai, ngayDat, gio, diaChi, phiCat, dichVu;
     private Button btn_Lich;
     private LinearLayout linearTrangThaiLich;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,7 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
         loadDataLichHen();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void loadDataLichHen() {
         StringRequest request = new StringRequest(Request.Method.GET, Constaint.CHI_TIET_LICHHEN+"/"+id_lichhen, res->{
 
@@ -81,7 +86,10 @@ public class ChiTietLichHenActivity extends AppCompatActivity {
                     ngayDat.setText(lichhenobject.getString("ngayHen"));
                     gio.setText(lichhenobject.getString("thoiGian"));
                     diaChi.setText(salonobject.getString("diaChi"));
-                    phiCat.setText(lichhenobject.getString("thanhTien"));
+                    DecimalFormat formatter = new DecimalFormat("###,###,###");
+                    Double so = Double.parseDouble(lichhenobject.getString("thanhTien"));
+                    String moneyString = formatter.format(so);
+                    phiCat.setText(moneyString+" đ");
                     dichVu.setText(dichvuobject.getString("tenDichvu"));
                     if (lichhenobject.getString("status").equals("Chưa xác nhận")){
                         linearTrangThaiLich.setBackgroundResource(R.drawable.border_orange);

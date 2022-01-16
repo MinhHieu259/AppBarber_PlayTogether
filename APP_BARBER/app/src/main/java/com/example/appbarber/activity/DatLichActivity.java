@@ -88,6 +88,7 @@ private int id_salon = 0;
 
             }
         });
+
         btnTieptuc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +101,7 @@ private int id_salon = 0;
                 startActivity(intent);
             }
         });
+
 
     }
 

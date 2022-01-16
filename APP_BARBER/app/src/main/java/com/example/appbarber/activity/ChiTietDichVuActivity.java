@@ -1,6 +1,8 @@
 package com.example.appbarber.activity;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
@@ -29,6 +32,7 @@ public class ChiTietDichVuActivity extends AppCompatActivity {
     private Button btn_ChonDV;
     private int id_dichvu = 0;
     private int id_salon = 0;
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,7 @@ public class ChiTietDichVuActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void getInFoCTDV() {
         StringRequest request = new StringRequest(Request.Method.GET, Constaint.GET_INFO_CTDV+"/"+id_dichvu, res->{
 
@@ -74,7 +79,10 @@ public class ChiTietDichVuActivity extends AppCompatActivity {
 
                     id_salon = dichvuobject.getInt("id_salon");
                     txtTenCTDV.setText(dichvuobject.getString("tenDichvu"));
-                    txtGiaCTDV.setText(dichvuobject.getString("giaTien")+" đ");
+                    DecimalFormat formatter = new DecimalFormat("###,###,###");
+                    Double so = Double.parseDouble(dichvuobject.getString("giaTien"));
+                    String moneyString = formatter.format(so);
+                    txtGiaCTDV.setText(moneyString+" đ");
                     txtTimeCTDV.setText(dichvuobject.getString("thoiGian")+" phút");
                     Picasso.get().load(Constaint.URL + "storage/dichvu/" + dichvuobject.getString("hinhanh")).into(imageCTDV);
 

@@ -123,6 +123,8 @@ public class LoginFragment extends Fragment {
                     startActivity(new Intent((LoginActivity)getContext(), DashboardActivity.class));
                     ((LoginActivity) getContext()).finish();
                     Toast.makeText(getContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "Tài khoản hoặc mật khẩu sai", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

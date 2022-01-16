@@ -168,6 +168,8 @@ TextView gio;
                     }
                     if (nhanVienLists.isEmpty()){
                         Toast.makeText(XacNhanActivity.this, "Không có nhân viên làm lúc "+getIntent().getStringExtra("gio"), Toast.LENGTH_SHORT).show();
+                        btn_xacnhandatlich.setEnabled(false);
+                        btn_xacnhandatlich.setBackgroundResource(R.drawable.border_gray);
                     }
                     nhanVienSpinnerAdapter = new NhanVienSpinnerAdapter(this, nhanVienLists);
                     spinnerNhanVien.setAdapter(nhanVienSpinnerAdapter);

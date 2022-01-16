@@ -2,6 +2,8 @@ package com.example.appbarber.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appbarber.Class.Dichvu;
@@ -36,12 +39,17 @@ public class noibatDichvuAdapter extends RecyclerView.Adapter<noibatDichvuAdapte
         return noibatDvViewHolder;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull noibatDvViewHolder holder, int position) {
         Dichvu dichvu = listDichvus.get(position);
         Picasso.get().load(Constaint.URL+"storage/dichvu/"+dichvu.getImage()).into(holder.imageDv);
         holder.tenDV.setText(dichvu.getTendv());
-        holder.gia.setText(dichvu.getGia());
+
+        DecimalFormat formatter = new DecimalFormat("###,###,###");
+        Double so = Double.parseDouble(dichvu.getGia());
+        String moneyString = formatter.format(so);
+        holder.gia.setText(moneyString+" đ");
         holder.tenSalon.setText(dichvu.getTensalon());
         holder.dvnoibatrelative.setOnClickListener(new View.OnClickListener() {
             @Override
