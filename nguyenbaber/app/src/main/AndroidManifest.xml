@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huynhnguyen.appbanhang" >
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <activity android:name="com.huynhnguyen.appbanhang.activity.ChiTietActivity" >
+        </activity>
+        <activity android:name="com.huynhnguyen.appbanhang.activity.DangKyActivity" >
+        </activity>
+        <activity android:name="com.huynhnguyen.appbanhang.activity.DangNhapActivity" >
+        </activity>
+<!--        <activity android:name="" >-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity android:name="com.huynhnguyen.appbanhang.activity.HoadonActivity" ></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name="com.huynhnguyen.appbanhang.activity.ThongTinShopActivity"
+            android:label="@string/title_activity_thong_tin_shop" />
+        <activity android:name="com.huynhnguyen.appbanhang.activity.ThongtinkhachActivity" />
+        <activity android:name="com.huynhnguyen.appbanhang.MHCActivity" />
+        <activity android:name="com.huynhnguyen.appbanhang.activity.GioHangActivity" />
+        <activity android:name="com.huynhnguyen.appbanhang.activity.LaptopActivity" />
+        <activity android:name="com.huynhnguyen.appbanhang.activity.ChiTietSPActivity" />
+        <activity android:name="com.huynhnguyen.appbanhang.activity.DienThoaiActivity" />
+        <activity android:name="com.huynhnguyen.appbanhang.activity.LoaispActivity" />
+        <activity android:name="com.huynhnguyen.appbanhang.activity.MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
