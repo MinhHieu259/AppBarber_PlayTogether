@@ -1,9 +1,9 @@
-package com.codingwithmitch.googlemaps1412022.Maker;
+package com.example.appbarber.Maker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.codingwithmitch.googlemaps1412022.Model.SalonGoogleMap;
+import com.example.appbarber.SalonGoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.android.clustering.ClusterItem;
 

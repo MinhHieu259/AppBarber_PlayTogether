@@ -24,11 +24,11 @@ import com.example.appbarber.Class.Salon;
 import com.example.appbarber.Class.SalonhelperFeature;
 import com.example.appbarber.Constaint;
 import com.example.appbarber.R;
-import com.example.appbarber.activity.MapsActivity;
 import com.example.appbarber.activity.TimKiemActivity;
 import com.example.appbarber.adapter.SalonAdapter;
 import com.example.appbarber.adapter.noibatDichvuAdapter;
 import com.example.appbarber.adapter.noibatSalonAdapter;
+import com.example.appbarber.googlemap.GoogleMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,7 +42,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class HomeFragment extends Fragment {
-    private LinearLayout lngantoi, lnbando, lntimkiem;
+    private LinearLayout  lnbando, lntimkiem;
     private  RecyclerView noibatRecycler, dvnoibatRecycler;
     private  RecyclerView.Adapter adapter;
     private ArrayList<Salon> salons;
@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
-        lngantoi = (LinearLayout) view.findViewById(R.id.lngantoi);
+
         lntimkiem = (LinearLayout) view.findViewById(R.id.lnloc);
         lnbando = (LinearLayout) view.findViewById(R.id.lnbando);
         swipeRefreshLayout = view.findViewById(R.id.refeshHome);
@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), MapsActivity.class);
+                Intent intent = new Intent(getContext(), GoogleMap.class);
                 startActivity(intent);
             }
         });

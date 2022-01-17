@@ -1,4 +1,4 @@
-package com.codingwithmitch.googlemaps1412022.util;
+package com.example.appbarber.util;
 
 import android.content.Context;
 
@@ -6,8 +6,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.codingwithmitch.googlemaps1412022.Constants;
-import com.codingwithmitch.googlemaps1412022.Model.SalonGoogleMap;
+import com.example.appbarber.Constaint;
+import com.example.appbarber.SalonGoogleMap;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,7 +30,7 @@ public class SalonStatic {
 
     public static void callSalon(Context context){
         List<SalonGoogleMap> salonArray = new ArrayList<>();
-        String url = Constants.GET_SALON;
+        String url = Constaint.GET_SALON;
         StringRequest request = new StringRequest(Request.Method.POST, url, response -> {
             try {
                 JSONObject object = new JSONObject(response);

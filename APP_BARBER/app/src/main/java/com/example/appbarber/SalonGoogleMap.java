@@ -1,4 +1,4 @@
-package com.codingwithmitch.googlemaps1412022.Model;
+package com.example.appbarber;
 
 public class SalonGoogleMap {
     private int id;

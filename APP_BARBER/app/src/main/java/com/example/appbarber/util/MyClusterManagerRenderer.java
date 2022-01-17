@@ -1,16 +1,13 @@
-package com.codingwithmitch.googlemaps1412022.util;
+package com.example.appbarber.util;
+
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.codingwithmitch.googlemaps1412022.Constants;
-import com.codingwithmitch.googlemaps1412022.Convert.ConvertBitMap;
-import com.codingwithmitch.googlemaps1412022.Maker.ClusterMarker;
-import com.codingwithmitch.googlemaps1412022.R;
+import com.example.appbarber.R;
+import com.example.appbarber.Constaint;
+import com.example.appbarber.Maker.ClusterMarker;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -22,18 +19,13 @@ import com.squareup.picasso.Picasso;
 
 public class MyClusterManagerRenderer extends DefaultClusterRenderer<ClusterMarker> {
 
-    private final  IconGenerator iconGenerator;
-    private final  ImageView imageView;
+    private final IconGenerator iconGenerator;
+    private final ImageView imageView;
     private final  int markerWidth;
     private final  int markerHeight;
 
-
-    public MyClusterManagerRenderer(Context context, GoogleMap googleMap,
-                                    ClusterManager<ClusterMarker> clusterManager) {
-
-        super(context, googleMap, clusterManager);
-
-        // initialize cluster item icon generator
+    public MyClusterManagerRenderer(Context context, GoogleMap map, ClusterManager<ClusterMarker> clusterManager) {
+        super(context, map, clusterManager);
         this.iconGenerator = new IconGenerator(context.getApplicationContext());
         this.imageView = new ImageView(context.getApplicationContext());
         this.markerWidth = (int) context.getResources().getDimension(R.dimen.custom_marker_image);
@@ -44,8 +36,6 @@ public class MyClusterManagerRenderer extends DefaultClusterRenderer<ClusterMark
         this.iconGenerator.setContentView(imageView);
     }
 
-
-
     /**
      * Rendering of the individual ClusterItems
      * @param item
@@ -54,7 +44,7 @@ public class MyClusterManagerRenderer extends DefaultClusterRenderer<ClusterMark
     @Override
     protected void onBeforeClusterItemRendered(ClusterMarker item, MarkerOptions markerOptions) {
         //imageView.setImageResource(R.drawable.cartman_cop);
-        Picasso.get().load(Constants.URL+"storage/salon/"+item.getIconPicture()).into(imageView);
+        Picasso.get().load(Constaint.URL+"storage/salon/"+item.getIconPicture()).into(imageView);
         Bitmap icon = iconGenerator.makeIcon();
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(icon)).title(item.getTitle());
     }
